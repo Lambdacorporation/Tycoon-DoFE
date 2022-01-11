@@ -7,22 +7,31 @@
 </head>
 <body>
     <div class="header">
-        <h1 class="name">School Tycoon</h1>
+        <h1 class="name">Rekonstrukce GTR</h1>
     </div>
     <div class="body">
-        <button id="makecoin" onclick="pracuj()">Get coin</button>
+        <h2 class="name">Je potřeba opravit tato budova:</h2>
+        <img src="https://www.zonerama.com/photos/305936147_1075x716_16.jpg" style="height: auto; width: 90%; border: 3px solid red; border-radius: 5px;">
+        <button id="pracuj" onclick="pracuj()">Získej coin</button>
+    </div>
+    <div id="building">
+        <h2 class="name">Věci potřebné pro rekonstrukci</h2>
+        <span id="chybapenize">Litujeme, ale na toto ještě nemáte peníze.<button id="pracuj" onclick="ok_penize()">OK</button></span>
+        <table>
+            <tr><td id="okna" class="buildthings" onclick="postav_okna()"><h3 class="building_title">Okna</h3><img src="https://www.zonerama.com/photos/305922329_781x781_16.jpg" style="width: 150px; height: 150px;"><br><p>Cena: 10 600 000 coinů</p></td></tr>
+        </table>
     </div>
     <div class="panel">
         <table>
             <tr>
                 <tr>
-                    <tr><h2 class="text" style="text-align: center;">Your stats:</h2></tr>
+                    <tr><h2 class="text" style="text-align: center;">Informace pro Vás:</h2></tr>
                 </tr>
             </tr>
             <tr>
                 <td><h3><p id="coiny" class="text">0 coinů</p></h3></td>
                 <td><h3><p id="vyroba" class="text">0 coinů/s</p></h3></td>
-                <td><h3><p id="progress" class="text">Progress: 0%</p></h3></td>
+                <td><h3><p id="progress" class="text">Postup: 0%</p></h3></td>
             </tr>
         </table>
     </div>
