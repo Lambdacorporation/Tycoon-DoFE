@@ -1,0 +1,57 @@
+body{
+    height: 100%;
+    margin: 0px;
+    background-color: black;
+    position: relative;
+}
+.body{
+    text-align: center;
+}
+.name{
+    text-align: center;
+    color: rgb(255, 0, 0);
+}
+.text{
+    margin-left: 10px;
+    color: goldenrod;
+}
+.header{
+    text-align: left;
+    border-radius: 0 0 10px 10px;
+    margin: 0 0 20px 0;
+    min-height: 70px;
+    width: 100%;
+    overflow: hidden;
+    padding-top: 10px;
+    width: 100%;
+    background-color: darkred;
+    border-bottom: red 3px solid;
+}
+.panel{
+    border-radius: 10px 10px 0 0;
+    min-height: 70px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    margin: 100% 0 0 0;
+    overflow: hidden;
+    padding-bottom: 10px;
+    width: 100%;
+    background-color: darkred;
+    border-top: red 3px solid;
+}
+#makecoin{
+    background-color: darkred;
+    border-radius: 50px;
+    align-items: center;
+    text-align: left;
+    color:gold;
+    margin-left: 10px;
+}
+#progress{
+    text-align: right;
+    right: 0;
+}
+#vyroba{
+    text-align: left;
+}

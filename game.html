@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Tycoon Game</title>
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+    <div class="header">
+        <h1 class="name">School Tycoon</h1>
+    </div>
+    <div class="body">
+        <button id="makecoin" onclick="pracuj()">Get coin</button>
+    </div>
+    <div class="panel">
+        <table>
+            <tr>
+                <tr>
+                    <tr><h2 class="text" style="text-align: center;">Your stats:</h2></tr>
+                </tr>
+            </tr>
+            <tr>
+                <td><h3><p id="coiny" class="text">0 coinů</p></h3></td>
+                <td><h3><p id="vyroba" class="text">0 coinů/s</p></h3></td>
+                <td><h3><p id="progress" class="text">Progress: 0%</p></h3></td>
+            </tr>
+        </table>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
