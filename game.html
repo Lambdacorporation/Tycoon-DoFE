@@ -10,7 +10,9 @@
     <div class="header">
         <h1 class="name">Rekonstrukce GTR</h1>
     </div>
+    <span id="chyba_nedostupne">Bohužel tato položka je již vyprodaná.<br><button id="pracuj" onclick="ok_penize()">OK</button></span>
     <span id="chybapenize">Litujeme, ale na toto ještě nemáte peníze.<br><button id="pracuj" onclick="ok_penize()">OK</button></span>
+    <span id="info_dotace">Gratulujeme získáváte dotaci ve výši <p><span id="pocet_penez">0</span> coinů.</p><br><button id="pracuj" onclick="ok_penize()">OK</button></span>
     <div class="budova" id="budova">
         <h2 class="name" style="margin-bottom: 1px;">Je potřeba opravit tato budova:</h2>
         <img src="https://www.zonerama.com/photos/305936147_1075x716_16.jpg" style="height: auto; width: 90%; border: 3px solid red; border-radius: 5px;" id="budova_obraz"><br>
@@ -18,20 +20,34 @@
     </div>
     <div class="body">
         <button id="pracuj" onclick="pracuj()">Získej coin</button>
+        <div class="jobs">
+            <h2 class="name">Vydělávací příležitosti:</h2>
+                <div id="vydelky1">
+                    <div class="buildthings" id="prijem_1" onclick="koupit_prijem_1()"><h3 class="building_title">Stálý příjem 1 coin/s</h3><img src="https://www.zonerama.com/photos/306620945_783x781_16.jpg" style="width: auto; height: 150px;"><br><p>Cena: 100 coinů</p><p>Zisk: 1 coin/s</p></div>
+                    <div class="buildthings" id="prijem_10" onclick="koupit_prijem_10()"><h3 class="building_title">Stálý příjem 10 coinů/s</h3><img src="https://www.zonerama.com/photos/307057927_520x520_16.jpg" style="width: auto; height: 150px;"><br><p>Cena: 500 coinů</p><p>Zisk: 10 coinů/s</p></div>
+                    <div class="buildthings" id="prijem_100" onclick="koupit_prijem_100()"><h3 class="building_title">Stálý příjem 100 coinů/s</h3><img src="https://www.zonerama.com/photos/307122871_901x817.jpg" style="width: auto; height: 150px;"><br><p>Cena: 2000 coinů</p><p>Zisk: 100 coinů/s</p></div>
+                </div>
+                <div id="vydelky2">
+                    <div class="buildthings" id="mesto_dotace" onclick="mesto_dotace()"><h3 class="building_title">Dotace od města Třebíč</h3><img src="https://www.zonerama.com/photos/306606024_331x238_16.jpg" style="width: auto; height: 150px;"><br><p>Cena: <span id="trebic_nedostupne">10 000 coinů</span></p><p>Zisk: 5 000 000 coinů</p></div>
+                </div>
+            <button class="closewindow" onclick="zpet()">Předchozí</button>
+            <button class="closewindow" onclick="dalsi()">Další</button>
+        </div>
     </div>
     <div id="building">
         <h2 class="name">Věci potřebné pro rekonstrukci</h2>
-        <table>
-            <tr><td class="buildthings" id="okna" onclick="postav_okna()"><h3 class="building_title">Okna</h3><img src="https://www.zonerama.com/photos/305922329_781x781_16.jpg" style="width: 150px; height: 150px;"><br><p>Cena: 10 600 000 coinů</p></td></tr>
-        </table>
+            <div id="stavba1">
+                <div class="buildthings" id="okna" onclick="postav_okna()"><h3 class="building_title">Okna</h3><img src="https://www.zonerama.com/photos/305922329_781x781_16.jpg" style="width: 150px; height: 150px;"><br><p id="cenaokna">Cena: 10 600 000 coinů</p></div>
+                <div class="buildthings" id="strecha" onclick="postav_strecha()"><h3 class="building_title">Střecha</h3><img src="https://www.zonerama.com/photos/306601446_375x210_16.jpg" style="width: 150px; height: 150px;"><br><p id="cenastrecha">Cena: 30 450 000 coinů</p></div>
+            </div>
     </div>
     <div class="panel">
         <table>
             <tr><h2 class="text" style="text-align: center;">Informace pro Vás:</h2></tr>
             <tr>
-                <td><h3><p id="coiny" class="text">0 coinů</p></h3></td>
+                <td><h3><p class="text"><span id="coiny">0</span> coinů</p></h3></td>
                 <td><h3><p id="vyroba" class="text">0 coinů/s</p></h3></td>
-                <td><h3><p id="progress" class="text">Postup: 0%</p></h3></td>
+                <td><h3><p id="postup" class="text">Postup: 0%</p></h3></td>
             </tr>
         </table>
     </div>
