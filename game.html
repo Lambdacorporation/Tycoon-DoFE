@@ -15,7 +15,7 @@
     <span id="info_dotace">Gratulujeme získáváte dotaci ve výši <p><span id="pocet_penez">0</span> coinů.</p><br><button id="pracuj" onclick="ok_penize()">OK</button></span>
     <div class="budova" id="budova">
         <h2 class="name" style="margin-bottom: 1px;">Je potřeba opravit tato budova:</h2>
-        <img src="https://www.zonerama.com/photos/305936147_1075x716_16.jpg" style="height: auto; width: 90%; border: 3px solid red; border-radius: 5px;" id="budova_obraz"><br>
+        <img src="https://www.zonerama.com/photos/305936147_1075x716_16.jpg" id="budova_obraz"><br>
         <button class="closewindow" id="budova_skryt" onclick="budova_skryt()">˄ skrýt</button>
     </div>
     <div class="body">
@@ -23,12 +23,18 @@
         <div class="jobs">
             <h2 class="name">Vydělávací příležitosti:</h2>
                 <div id="vydelky1">
-                    <div class="buildthings" id="prijem_1" onclick="koupit_prijem_1()"><h3 class="building_title">Stálý příjem 1 coin/s</h3><img src="https://www.zonerama.com/photos/306620945_783x781_16.jpg" style="width: auto; height: 150px;"><br><p>Cena: 100 coinů</p><p>Zisk: 1 coin/s</p></div>
-                    <div class="buildthings" id="prijem_10" onclick="koupit_prijem_10()"><h3 class="building_title">Stálý příjem 10 coinů/s</h3><img src="https://www.zonerama.com/photos/307057927_520x520_16.jpg" style="width: auto; height: 150px;"><br><p>Cena: 500 coinů</p><p>Zisk: 10 coinů/s</p></div>
-                    <div class="buildthings" id="prijem_100" onclick="koupit_prijem_100()"><h3 class="building_title">Stálý příjem 100 coinů/s</h3><img src="https://www.zonerama.com/photos/307122871_901x817.jpg" style="width: auto; height: 150px;"><br><p>Cena: 2000 coinů</p><p>Zisk: 100 coinů/s</p></div>
+                    <div class="buildthings" id="prijem_1" onclick="koupit_prijem_1()"><h3 class="building_title">Dary od rodičů</h3><img src="https://www.zonerama.com/photos/306620945_783x781_16.jpg" style="width: auto; height: 150px;"><br><p>Cena: 100 coinů</p><p>Zisk: 1 coin/s</p></div>
+                    <div class="buildthings" id="prijem_10" onclick="koupit_prijem_10()"><h3 class="building_title">Dary od firem</h3><img src="https://www.zonerama.com/photos/307057927_520x520_16.jpg" style="width: auto; height: 150px;"><br><p>Cena: 500 coinů</p><p>Zisk: 10 coinů/s</p></div>
+                    <div class="buildthings" id="prijem_100" onclick="koupit_prijem_100()"><h3 class="building_title">Dotace od města Třebíč</h3><img src="https://www.zonerama.com/photos/307122871_901x817.jpg" style="width: auto; height: 150px;"><br><p>Cena: 2000 coinů</p><p>Zisk: 100 coinů/s</p></div>
                 </div>
                 <div id="vydelky2">
-                    <div class="buildthings" id="mesto_dotace" onclick="mesto_dotace()"><h3 class="building_title">Dotace od města Třebíč</h3><img src="https://www.zonerama.com/photos/306606024_331x238_16.jpg" style="width: auto; height: 150px;"><br><p>Cena: <span id="trebic_nedostupne">10 000 coinů</span></p><p>Zisk: 5 000 000 coinů</p></div>
+                    <div class="buildthings" id="prijem_1000" onclick="koupit_prijem_1000()"><h3 class="building_title">Dotace od kraje Vysočina</h3><img src="https://eu.zonerama.com/photos/307899384_270x270_16.jpg" style="width: auto; height: 150px;"><br><p>Cena: 15000 coinů</p><p>Zisk: 1000 coinů/s</p></div>
+                    <div class="buildthings" id="prijem_10000" onclick="koupit_prijem_10000()"><h3 class="building_title">Dotace od MŠMT</h3><img src="https://eu.zonerama.com/photos/307912387_250x250_16.jpg" style="width: auto; height: 150px;"><br><p>Cena: 140000 coinů</p><p>Zisk: 10000 coinů/s</p></div>
+                    <div class="buildthings"><h3 class="building_title">Bitcoin</h3><img src="https://eu.zonerama.com/photos/307901321_781x781_16_timestamp(637790569718870000).jpg" style="width: auto; height: 150px;"><br><p>Cena: <span id="btc_cena">0</span> coinů</p><p>Počet vašich BTC: <span id="btc_pocet">0</span></p><button id="btc_button" onclick="koupit_btc()">Koupit</button><button id="btc_button" onclick="prodat_btc()">Prodat</button></div>
+                    
+                </div>
+                <div id="vydelky3">
+                    <div class="buildthings" id="mesto_dotace" onclick="mesto_dotace()"><h3 class="building_title">Dotace od města Třebíč</h3><img src="https://www.zonerama.com/photos/306606024_331x238_16.jpg" style="width: auto; height: 150px;"><br><p>Cena: <span id="trebic_nedostupne">100 000 coinů</span></p><p>Zisk: 5 000 000 coinů</p></div>
                 </div>
             <button class="closewindow" onclick="zpet()">Předchozí</button>
             <button class="closewindow" onclick="dalsi()">Další</button>
