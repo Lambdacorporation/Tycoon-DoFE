@@ -244,7 +244,7 @@ function postav_strecha(){
     document.getElementById("cenastrecha").innerHTML = "ZAKOUPENO";
 }
 function aktualizovatprijem(){
-    vyroba = (prijem_1*pocet_prijem_1)+(prijem_10*pocet_prijem_10)+(prijem_100*pocet_prijem_100)+(prijem_1000*pocet_prijem_1000);
+    vyroba = (prijem_1*pocet_prijem_1)+(prijem_10*pocet_prijem_10)+(prijem_100*pocet_prijem_100)+(prijem_1000*pocet_prijem_1000)+(prijem_10000*pocet_prijem_10000);
     if (vyroba == 1) sklonovani_vyroba = "coin";
     if ((vyroba >= 2)&&(vyroba < 5)) sklonovani_vyroba = "coiny";
     if (vyroba >= 5) sklonovani_vyroba = "coinů";
@@ -259,6 +259,7 @@ window.setInterval(function() {
     dostat_prijem_10();
     dostat_prijem_100();
     dostat_prijem_1000();
+    dostat_prijem_10000();
 }, 1000);
 
 //nastavuje interval 3 sekundy pro cenu bitcoinu
