@@ -89,6 +89,9 @@ body{
 }
 #building{
     margin-bottom: 200px;
+    text-align: center;
+    align-items: center;
+    display: block;
 }
 .building_title{
     color: red;
@@ -161,6 +164,32 @@ div.jobs div.buildthings:hover{
     from {opacity: 0%;}
     to {opacity: 100%;}
 }
+#stavba1{
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+    grid-column-gap: 2px;
+    animation-name: stavba;
+    animation-duration: 1s;
+}
+#stavba2{
+    grid-template-columns: repeat(3, 33%);
+    grid-column-gap: 2px;
+    display: none;
+    animation-name: stavba;
+    animation-duration: 1s;
+}
+#stavba3{
+    grid-template-columns: repeat(3, 33%);
+    grid-column-gap: 2px;
+    display: none;
+    animation-name: stavba;
+    animation-duration: 1s;
+}
+@keyframes stavba {
+    from {opacity: 0%;}
+    to {opacity: 100%;}
+}
+
 #btc_button{
     background-color: black;
     align-items: center;
@@ -174,49 +203,15 @@ div.jobs div.buildthings:hover{
 #btc_button:hover{
     background-color: red;
 }
-#chybapenize {
+#chyba_nedostupne, #prohra, #chybapenize {
     visibility: hidden;
     width: auto;
     height: auto;
     background-color: #000;
     color: #fff;
-    right: 40%;
-    left: 40%;
-    bottom: 45%;
-    top: 45%;
-    text-align: center;
-    border-radius: 6px;
-    padding: 8px 8px;
-    position: fixed;
-    z-index: 1;
-    opacity: 85%;
-}
-#info_dotace {
-    visibility: hidden;
-    width: auto;
-    height: auto;
-    background-color: #000;
-    color: #fff;
-    right: 30%;
-    left: 30%;
-    bottom: 40%;
-    top: 40%;
-    text-align: center;
-    border-radius: 6px;
-    padding: 8px 8px;
-    position: fixed;
-    z-index: 1;
-    opacity: 85%;
-}
-#chyba_nedostupne {
-    visibility: hidden;
-    width: auto;
-    height: auto;
-    background-color: #000;
-    color: #fff;
-    right: 40%;
-    left: 40%;
-    bottom: 43%;
+    right: 35%;
+    left: 35%;
+    bottom: auto;
     top: 43%;
     text-align: center;
     border-radius: 6px;
