@@ -12,16 +12,20 @@ var prijem_1000 = 1000;
 var cena_prijem_1000 = 15000;
 var prijem_10000 = 10000;
 var cena_prijem_10000 = 140000;
-var cena_dotace_trebic = 100000;
-var dotace_trebic = 5000000;
-var cena_oken = 10600000;
-var cena_strechy = 30450000;
+var prijem_100k = 100000;
+var cena_prijem_100k = 1200000;
+var cena_oken = 85000000;
+var cena_strechy = 160500000;
+var cena_podlaha = 110000000;
 
 //Hráč chce rozbalit nebo skrýt obrázek budovy
 var skryto = false;
+var a = document.getElementById("budova_obraz").width;
+document.getElementById("budova_obraz").innerHTML = (a/3)*2 +"px";
 function budova_skryt(){
     if (skryto){
-        document.getElementById("budova_obraz").style.height = "440px";
+        a = document.getElementById("budova_obraz").width;
+        document.getElementById("budova_obraz").style.height = (a/3)*2 +"px";
         document.getElementById("budova_obraz").style.border = "3px solid red";
         document.getElementById("budova_skryt").innerHTML = "˄ skrýt";
         skryto = false;
@@ -30,6 +34,18 @@ function budova_skryt(){
         document.getElementById("budova_obraz").style.border = "none";
         document.getElementById("budova_skryt").innerHTML = "v rozbalit";
         skryto = true;
+    }
+}
+function zmena_okna(){
+    if (skryto == false){
+        if (document.getElementById("budova_obraz").width != a){
+            a = document.getElementById("budova_obraz").width;
+            document.getElementById("budova_obraz").style.height = (a/3)*2 +"px";
+            document.getElementById("budova_obraz").style.border = "3px solid red";
+            document.getElementById("budova_skryt").innerHTML = "˄ skrýt";
+            skryto = false;
+            return;
+        }
     }
 }
 //Hráč chce překliknout na další nebo předchozí stránku výdělků
@@ -55,8 +71,8 @@ function zpet(){
     strana -= 1;
     if (strana < 1){
         strana = celkemstran;
-        document.getElementById("vydelky3").style.display = "none";
-        document.getElementById("vydelky1").style.display = "grid";
+        document.getElementById("vydelky3").style.display = "grid";
+        document.getElementById("vydelky1").style.display = "none";
     }
     if (strana == 1){
         document.getElementById("vydelky2").style.display = "none";
@@ -67,16 +83,48 @@ function zpet(){
         document.getElementById("vydelky2").style.display = "grid";
     }
 }
+//Hráč chce překliknout na další nebo předchozí stránku věcí potřebných k rekonstrukci
+var strana_rekonstrukce = 1;
+var celkemstran_rekonstrukce = 3;
+function dalsi_rekonstrukce(){
+    strana_rekonstrukce += 1;
+    if (strana_rekonstrukce > celkemstran_rekonstrukce){
+        strana_rekonstrukce = 1;
+        document.getElementById("stavba3").style.display = "none";
+        document.getElementById("stavba1").style.display = "grid";
+    }
+    if (strana_rekonstrukce == 2){
+        document.getElementById("stavba2").style.display = "grid";
+        document.getElementById("stavba1").style.display = "none";
+    }
+    if (strana_rekonstrukce == 3){
+        document.getElementById("stavba3").style.display = "grid";
+        document.getElementById("stavba2").style.display = "none";
+    }
+}
+function zpet_rekonstrukce(){
+    strana_rekonstrukce -= 1;
+    if (strana_rekonstrukce < 1){
+        strana_rekonstrukce = celkemstran_rekonstrukce;
+        document.getElementById("stavba3").style.display = "grid";
+        document.getElementById("stavba1").style.display = "none";
+    }
+    if (strana_rekonstrukce == 1){
+        document.getElementById("stavba2").style.display = "none";
+        document.getElementById("stavba1").style.display = "grid";
+    }
+    if (strana_rekonstrukce == 2){
+        document.getElementById("stavba3").style.display = "none";
+        document.getElementById("stavba2").style.display = "grid";
+    }
+}
 
 //výdělek klikáním
 var coiny = 0;
 var prijem = 1;
-var sklonovani = "coinů";
+var sklonovani = " coinů";
 function pracuj(){
     coiny += prijem;
-    if (coiny == 1) sklonovani = "coin";
-    if ((coiny >= 2)&&(coiny < 5)) sklonovani = "coiny";
-    if (coiny >= 5) sklonovani = "coinů";
     document.getElementById("coiny").innerHTML = coiny;
 }
 //Trvalý výdělek 1 coin/s
@@ -88,6 +136,7 @@ function dostat_prijem_1(){
 function koupit_prijem_1(){
     if(coiny < cena_prijem_1){
         document.getElementById("chybapenize").style.visibility = "visible";
+        
         return;
     }
     pocet_prijem_1 += 1;
@@ -103,6 +152,7 @@ function dostat_prijem_10(){
 function koupit_prijem_10(){
     if(coiny < cena_prijem_10){
         document.getElementById("chybapenize").style.visibility = "visible";
+        
         return;
     }
     pocet_prijem_10 += 1;
@@ -118,6 +168,7 @@ function dostat_prijem_100(){
 function koupit_prijem_100(){
     if(coiny < cena_prijem_100){
         document.getElementById("chybapenize").style.visibility = "visible";
+        
         return;
     }
     pocet_prijem_100 += 1;
@@ -133,6 +184,7 @@ function dostat_prijem_1000(){
 function koupit_prijem_1000(){
     if(coiny < cena_prijem_1000){
         document.getElementById("chybapenize").style.visibility = "visible";
+        
         return;
     }
     pocet_prijem_1000 += 1;
@@ -148,6 +200,7 @@ function dostat_prijem_10000(){
 function koupit_prijem_10000(){
     if(coiny < cena_prijem_10000){
         document.getElementById("chybapenize").style.visibility = "visible";
+        
         return;
     }
     pocet_prijem_10000 += 1;
@@ -159,6 +212,7 @@ var pocet_btc = 0;
 function koupit_btc(){
     if(coiny < cena_btc){
         document.getElementById("chybapenize").style.visibility = "visible";
+        
         return;
     }
     pocet_btc += 1;
@@ -170,6 +224,7 @@ function koupit_btc(){
 function prodat_btc(){
     if(pocet_btc < 1){
         document.getElementById("chybapenize").style.visibility = "visible";
+        
         return;
     }
     pocet_btc -= 1;
@@ -184,30 +239,26 @@ function btc_zmena(){
     cena_btc = Math.round(Math.random() * 100000);
     document.getElementById("btc_cena").innerHTML = cena_btc;
 }
-//Dotace od města Třebíče
-var koupeno_dotace_trebic = false;
-function mesto_dotace(){
-    if (coiny < cena_dotace_trebic){
+//Trvalý výdělek 100k coin/s
+var pocet_prijem_100k = 0;
+function dostat_prijem_100k(){
+    coiny += prijem_100k * pocet_prijem_100k;
+    document.getElementById("coiny").innerHTML = coiny;
+}
+function koupit_prijem_100k(){
+    if(coiny < cena_prijem_100k){
         document.getElementById("chybapenize").style.visibility = "visible";
         return;
     }
-    if (koupeno_dotace_trebic){
-        document.getElementById("chyba_nedostupne").style.visibility = "visible";
-        return;
-    }
-    coiny -= cena_dotace_trebic;
-    document.getElementById("pocet_penez").innerHTML = dotace_trebic;
-    document.getElementById("info_dotace").style.visibility = "visible";
-    coiny += dotace_trebic;
+    pocet_prijem_100k += 1;
+    coiny -= cena_prijem_100k;
     document.getElementById("coiny").innerHTML = coiny;
-    koupeno_dotace_trebic = true;
-    document.getElementById("trebic_nedostupne").innerHTML = "NEDOSTUPNÉ";
 }
 //Odkliknutí OK na chybové hlášce
 function ok_penize(){
     document.getElementById("chyba_nedostupne").style.visibility = "hidden";
     document.getElementById("chybapenize").style.visibility = "hidden";
-    document.getElementById("info_dotace").style.visibility = "hidden";
+    document.getElementById("all").style.filter = "";
 }
 
 //Hráč si kupuje okna
@@ -215,10 +266,12 @@ var koupeno_okna = false;
 function postav_okna(){
     if (koupeno_okna){
         document.getElementById("chyba_nedostupne").style.visibility = "visible";
+        
         return;
     }
     if (coiny < cena_oken){
         document.getElementById("chybapenize").style.visibility = "visible";
+        
         return;
     }
     coiny -= cena_oken;
@@ -243,23 +296,61 @@ function postav_strecha(){
     document.getElementById("coiny").innerHTML = coiny;
     document.getElementById("cenastrecha").innerHTML = "ZAKOUPENO";
 }
+//Hráč si kupuje střechu
+var koupeno_podlaha = false;
+function postav_podlaha(){
+    if (koupeno_podlaha){
+        document.getElementById("chyba_nedostupne").style.visibility = "visible";
+        return;
+    }
+    if (coiny < cena_podlaha){
+        document.getElementById("chybapenize").style.visibility = "visible";
+        return;
+    }
+    coiny -= cena_podlaha;
+    koupeno_podlaha = true;
+    document.getElementById("coiny").innerHTML = coiny;
+    document.getElementById("cenapodlaha").innerHTML = "ZAKOUPENO";
+}
+//Prohra
+function prohra(){
+    if (coiny <= -10000){
+        document.getElementById("prohra").style.visibility = "visible";
+        return;
+    }
+}
+function ok_prohra(){
+    window.location.href="game.html";
+}
+//aktualizování příjmu
 function aktualizovatprijem(){
-    vyroba = (prijem_1*pocet_prijem_1)+(prijem_10*pocet_prijem_10)+(prijem_100*pocet_prijem_100)+(prijem_1000*pocet_prijem_1000)+(prijem_10000*pocet_prijem_10000);
+    vyroba = (prijem_1*pocet_prijem_1)+(prijem_10*pocet_prijem_10)+(prijem_100*pocet_prijem_100)+(prijem_1000*pocet_prijem_1000)+(prijem_10000*pocet_prijem_10000)+(prijem_100k*pocet_prijem_100k);
     if (vyroba == 1) sklonovani_vyroba = "coin";
     if ((vyroba >= 2)&&(vyroba < 5)) sklonovani_vyroba = "coiny";
     if (vyroba >= 5) sklonovani_vyroba = "coinů";
     document.getElementById("vyroba").innerHTML = vyroba + " " + sklonovani_vyroba + "/s";
+    if (coiny == 1) sklonovani = " coin";
+    if ((coiny >= 2)&&(coiny < 5)) sklonovani = " coiny";
+    if (coiny >= 5) sklonovani = " coinů";
+    document.getElementById("sklonovani_coiny").innerHTML = sklonovani;
+    if (coiny >= 1000) document.getElementById("coiny").innerHTML = Math.round(coiny/100)/10 + "k";
+    if (coiny >= 1000000) document.getElementById("coiny").innerHTML = Math.round(coiny/100000)/10 + "mil";
+    if (coiny >= 1000000000) document.getElementById("coiny").innerHTML = Math.round(coiny/100000000)/10 + "mld";
 }
+
 window.setInterval(function() {
     aktualizovatprijem();
-}, 10);
+    zmena_okna();
+}, 0);
 //nastavuje interval 1 sekundu pro každý výdělek
 window.setInterval(function() {
+    prohra();
     dostat_prijem_1();
     dostat_prijem_10();
     dostat_prijem_100();
     dostat_prijem_1000();
     dostat_prijem_10000();
+    dostat_prijem_100k();
 }, 1000);
 
 //nastavuje interval 3 sekundy pro cenu bitcoinu
