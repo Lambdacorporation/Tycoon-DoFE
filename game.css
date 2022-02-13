@@ -30,6 +30,7 @@ body{
     border-radius: 5px;
     color: white;
     cursor: pointer;
+    z-index: 1;
     margin-top: 0px;
     background-color: black;
     align-items: center;
@@ -49,13 +50,14 @@ body{
     width: 100%;
     overflow: hidden;
     padding-top: 10px;
+    width: 100%;
     background-color: darkred;
     border-bottom: red 3px solid;
 }
 .panel{
     border-radius: 10px 10px 0 0;
     min-height: 70px;
-    width: 100%;
+    width: 99%;
     position: fixed;
     bottom: 0;
     overflow: hidden;
@@ -85,45 +87,17 @@ body{
 #vyroba{
     text-align: left;
 }
-#building{
-    margin-bottom: 200px;
-    text-align: center;
-    align-items: center;
-    display: block;
-}
 .building_title{
     color: red;
     text-align: center;
 }
-div#building div.buildthings{
+div.buildthings{
     transition:all 0.5s; 
     -moz-transition:all 0.5s; 
     -webkit-transition:all 0.5s;
     cursor: pointer;
 }
-div#building div.buildthings:hover{
-    transform:scale(1.05);
-    -moz-transform: scale(1.05);
-    -webkit-transform:scale(1.05);
-}
-#stavba1{
-    display: grid;
-    grid-template-columns: repeat(3, 33%);
-    grid-column-gap: 2px;
-}
-.jobs{
-    text-align: center;
-    align-items: center;
-    display: block;
-    margin: auto;
-}
-div.jobs div.buildthings{
-    transition:all 0.5s; 
-    -moz-transition:all 0.5s; 
-    -webkit-transition:all 0.5s;
-    cursor: pointer;
-}
-div.jobs div.buildthings:hover{
+div.buildthings:hover{
     transform:scale(1.05);
     -moz-transform: scale(1.05);
     -webkit-transform:scale(1.05);
@@ -136,6 +110,12 @@ div.jobs div.buildthings:hover{
     background:white;
     box-shadow:inset 0 0 0 red, 5px 0 20px red;
     text-align: center;
+}
+.jobs{
+    text-align: center;
+    align-items: center;
+    display: block;
+    margin: auto;
 }
 #vydelky1{
     display: grid;
@@ -162,32 +142,45 @@ div.jobs div.buildthings:hover{
     from {opacity: 0%;}
     to {opacity: 100%;}
 }
+#building{
+    text-align: center;
+    align-items: center;
+    display: block;
+}
 #stavba1{
     display: grid;
     grid-template-columns: repeat(3, 33%);
     grid-column-gap: 2px;
-    animation-name: stavba;
+    animation-name: vydelky;
     animation-duration: 1s;
 }
 #stavba2{
     grid-template-columns: repeat(3, 33%);
     grid-column-gap: 2px;
     display: none;
-    animation-name: stavba;
+    animation-name: vydelky;
     animation-duration: 1s;
 }
 #stavba3{
     grid-template-columns: repeat(3, 33%);
     grid-column-gap: 2px;
     display: none;
-    animation-name: stavba;
+    animation-name: vydelky;
     animation-duration: 1s;
 }
-@keyframes stavba {
-    from {opacity: 0%;}
-    to {opacity: 100%;}
+#pracovnici{
+    margin-bottom: 200px;
+    text-align: center;
+    align-items: center;
+    display: block;
 }
-
+#pracovnici1{
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+    grid-column-gap: 2px;
+    animation-name: vydelky;
+    animation-duration: 1s;
+}
 #btc_button{
     background-color: black;
     align-items: center;
