@@ -58,13 +58,20 @@
             <button class="closewindow" onclick="zpet_rekonstrukce()">Předchozí</button>
             <button class="closewindow" onclick="dalsi_rekonstrukce()">Další</button>
     </div>
+    <div id="pracovnici">
+        <h2 class="name">Dělníci</h2>
+            <div id="pracovnici1">
+                <div class="buildthings" id="zakladdelnik" onclick="kup_zakladdelnik()"><h3 class="building_title">Dělník Franta</h3><img src="https://eu.zonerama.com/photos/309467301_228x228_16.jpg" style="width: 90%; height: auto;"><br><p>Cena: 50k coinů/s</p><p>Rychlost: 0.0001%/s</p></div>
+                <div class="buildthings" id="strednidelnik" onclick="kup_strednidelnik()"><h3 class="building_title">Dělník Ondra</h3><img src="https://eu.zonerama.com/photos/309480410_228x228_16.jpg" style="width: 90%; height: auto;"><br><p>Cena: 1mil coinů/s</p><p>Rychlost: 0.01%/s</p></div>
+            </div>
+    </div>
     <div class="panel">
         <table>
             <tr><h2 class="text" style="text-align: center;">Informace pro Vás:</h2></tr>
             <tr>
                 <td><h3><p class="text"><span id="coiny">0</span><span id="sklonovani_coiny"> coinů</span></p></h3></td>
                 <td><h3><p id="vyroba" class="text">0 coinů/s</p></h3></td>
-                <td><h3><p id="postup" class="text">Postup: 0%</p></h3></td>
+                <td><h3><p class="text">Zrekonstruováno: <span id="postup">0</span>%</p></h3></td>
             </tr>
         </table>
     </div>
