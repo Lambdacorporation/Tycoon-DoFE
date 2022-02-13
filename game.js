@@ -20,9 +20,10 @@ var cena_podlaha = 110000000;
 
 var cena_zakladdelnik = 50000;
 var cena_strednidelnik = 1000000;
+var cena_nejdelnik = 50000000;
 
 //Hráč chce rozbalit nebo skrýt obrázek budovy
-var skryto = false;
+var skryto = true;
 var a = document.getElementById("budova_obraz").width;
 document.getElementById("budova_obraz").innerHTML = (a/3)*2 +"px";
 function budova_skryt(){
@@ -134,8 +135,6 @@ function pracuj(){
 var prijmy = 0;
 var odecty = 0;
 function dostat_prijem(){
-    prijmy = (prijem_1*pocet_prijem_1)+(prijem_10*pocet_prijem_10)+(prijem_100*pocet_prijem_100)+(prijem_1000*pocet_prijem_1000)+(prijem_10000*pocet_prijem_10000)+(prijem_100k*pocet_prijem_100k);
-    odecty = (cena_zakladdelnik*pocet_zakladdelnik)+(cena_strednidelnik*pocet_strednidelnik);
     coiny += prijmy - odecty
     document.getElementById("coiny").innerHTML = coiny;
 }
@@ -299,6 +298,10 @@ function postav_podlaha(){
     document.getElementById("cenapodlaha").innerHTML = "ZAKOUPENO";
 }
 //Dělníci
+//Hráč si může zaměstnat dělníka
+if ((koupeno_okna)&&(koupeno_podlaha)&&(koupeno_strecha)){
+    document.getElementById("chyba_nemuzestavet").visibility = "hidden";
+}
 //Dělník Franta
 var pocet_zakladdelnik = 0;
 var rychlost_zakladdelnik = 0.0001;
@@ -319,10 +322,20 @@ function kup_strednidelnik (){
     }
     pocet_strednidelnik += 1;
 }
+//Dělník Ludva
+var pocet_nejdelnik = 0;
+var rychlost_nejdelnik = 1;
+function kup_nejdelnik (){
+    if (vyroba < cena_nejdelnik){
+        document.getElementById("chybapenize").style.visibility = "visible";
+        return;
+    }
+    pocet_nejdelnik += 1;
+}
 //Aktualizování postupu
 var postup = 0;
 function postup_pridat(){
-    postup += (pocet_zakladdelnik*rychlost_zakladdelnik) + (pocet_strednidelnik*rychlost_strednidelnik);
+    postup += (pocet_zakladdelnik*rychlost_zakladdelnik) + (pocet_strednidelnik*rychlost_strednidelnik) + (pocet_nejdelnik*rychlost_nejdelnik);
     document.getElementById("postup").innerHTML = Math.round(postup*10000)/10000;
 }
 //Prohra
@@ -343,7 +356,9 @@ function vyhra(){
 }
 //aktualizování příjmu
 function aktualizovatprijem(){
-    vyroba = (prijem_1*pocet_prijem_1)+(prijem_10*pocet_prijem_10)+(prijem_100*pocet_prijem_100)+(prijem_1000*pocet_prijem_1000)+(prijem_10000*pocet_prijem_10000)+(prijem_100k*pocet_prijem_100k)-(cena_zakladdelnik*pocet_zakladdelnik)-(cena_strednidelnik*pocet_strednidelnik);
+    prijmy = (prijem_1*pocet_prijem_1)+(prijem_10*pocet_prijem_10)+(prijem_100*pocet_prijem_100)+(prijem_1000*pocet_prijem_1000)+(prijem_10000*pocet_prijem_10000)+(prijem_100k*pocet_prijem_100k);
+    odecty = (cena_zakladdelnik*pocet_zakladdelnik)+(cena_strednidelnik*pocet_strednidelnik)+(pocet_nejdelnik*rychlost_nejdelnik);
+    vyroba = prijmy - odecty;
     if (vyroba == 1) sklonovani_vyroba = "coin";
     if ((vyroba >= 2)&&(vyroba < 5)) sklonovani_vyroba = "coiny";
     if (vyroba >= 5) sklonovani_vyroba = "coinů";
