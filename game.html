@@ -18,7 +18,7 @@
     <div class="budova" id="budova">
         <h2 class="name" style="margin-bottom: 1px;">Je potřeba opravit tato budova:</h2>
         <img src="https://www.zonerama.com/photos/305936147_1075x716_16.jpg" id="budova_obraz"><br>
-        <button class="closewindow" id="budova_skryt" onclick="budova_skryt()">˄ skrýt</button>
+        <button class="closewindow" id="budova_skryt" onclick="budova_skryt()">v rozbalit</button>
     </div>
     <div class="body">
         <button id="pracuj" onclick="pracuj()">Získej coin</button>
@@ -60,10 +60,16 @@
     </div>
     <div id="pracovnici">
         <h2 class="name">Dělníci</h2>
+        <div id="delnici_prekryti">
+            <div id="chyba_nemuzestavet">
+                <h2>Tato část se odemkne až nakoupíte všechny věci potřebné k rekonstrukci.</h2>
+            </div>
             <div id="pracovnici1">
                 <div class="buildthings" id="zakladdelnik" onclick="kup_zakladdelnik()"><h3 class="building_title">Dělník Franta</h3><img src="https://eu.zonerama.com/photos/309467301_228x228_16.jpg" style="width: 90%; height: auto;"><br><p>Cena: 50k coinů/s</p><p>Rychlost: 0.0001%/s</p></div>
                 <div class="buildthings" id="strednidelnik" onclick="kup_strednidelnik()"><h3 class="building_title">Dělník Ondra</h3><img src="https://eu.zonerama.com/photos/309480410_228x228_16.jpg" style="width: 90%; height: auto;"><br><p>Cena: 1mil coinů/s</p><p>Rychlost: 0.01%/s</p></div>
+                <div class="buildthings" id="nejdelnik" onclick="kup_nejdelnik()"><h3 class="building_title">Dělník Ludva</h3><img src="https://eu.zonerama.com/photos/309717738_228x228_16.jpg" style="width: 90%; height: auto;"><br><p>Cena: 50mil coinů/s</p><p>Rychlost: 1%/s</p></div>
             </div>
+        </div>
     </div>
     <div class="panel">
         <table>
