@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="game.css">
 </head>
 <body>
+    <span id="vyhra">Gratulujeme, podařilo se Vám vyhrát první level této hry.<br> Tato hra je stále ve vývoji, a tak je hotový pouze tento level.<br> Děkujeme, že jste se stal Beta testerem této hry.<br> Po kliknutí na tlačítko se Váš postup resetuje.<br><button id="pracuj" onclick="ok_prohra()">OK</button></span>
     <span id="prohra">Litujeme, ale dostal jste školu do dluhů. Vaše hra tímto končí. Po kliknutí na tlačítko se Váš postup resetuje.<br><button id="pracuj" onclick="ok_prohra()">OK</button></span>
     <span id="chyba_nedostupne">Bohužel tato položka je již vyprodaná.<br><button id="pracuj" onclick="ok_penize()">OK</button></span>
     <span id="chybapenize">Litujeme, ale na toto ještě nemáte peníze.<br><button id="pracuj" onclick="ok_penize()">OK</button></span>
@@ -14,7 +15,6 @@
     <div class="header">
         <h1 class="name">Rekonstrukce GTR</h1>
     </div>
-    
     <div class="budova" id="budova">
         <h2 class="name" style="margin-bottom: 1px;">Je potřeba opravit tato budova:</h2>
         <img src="https://www.zonerama.com/photos/305936147_1075x716_16.jpg" id="budova_obraz"><br>
@@ -45,15 +45,17 @@
     <div id="building">
         <h2 class="name">Věci potřebné pro rekonstrukci</h2>
             <div id="stavba1">
+                <div class="buildthings" id="polystyren" onclick="postav_polystyren()"><h3 class="building_title">Polystyren</h3><img src="https://eu.zonerama.com/photos/310086275_853x853.jpg" style="width: 90%; height: auto;"><br><p id="cenapolystyren">Cena: 30mil coinů</p></div>
+                <div class="buildthings" id="obklady" onclick="postav_obklady()"><h3 class="building_title">Obklady</h3><img src="https://eu.zonerama.com/photos/310086022_781x781_16.jpg" style="width: 90%; height: auto;"><br><p id="cenaobklady">Cena: 40mil coinů</p></div>
                 <div class="buildthings" id="okna" onclick="postav_okna()"><h3 class="building_title">Okna</h3><img src="https://www.zonerama.com/photos/305922329_781x781_16.jpg" style="width: 90%; height: auto;"><br><p id="cenaokna">Cena: 85mil coinů</p></div>
+            </div>
+            <div id="stavba2">
+                <div class="buildthings" id="technika" onclick="postav_technika()"><h3 class="building_title">Stavební technika</h3><img src="https://eu.zonerama.com/photos/310084933_825x781_16.jpg" style="width: 90%; height: auto;"><br><p id="cenatechnika">Cena: 100mil coinů</p></div>
                 <div class="buildthings" id="podlaha" onclick="postav_podlaha()"><h3 class="building_title">Podlaha</h3><img src="https://eu.zonerama.com/photos/308556789_665x665.jpg" style="width: 90%; height: auto;"><br><p id="cenapodlaha">Cena: 110mil coinů</p></div>
                 <div class="buildthings" id="strecha" onclick="postav_strecha()"><h3 class="building_title">Střecha</h3><img src="https://eu.zonerama.com/photos/308551522_210x210_16.jpg" style="width: 90%; height: auto;"><br><p id="cenastrecha">Cena: 160.5mil coinů</p></div>
             </div>
-            <div id="stavba2">
-                <div class="buildthings" id="" onclick=""><h3 class="building_title">ROZDĚLANÁ PRÁCE</h3><img src="https://www.zonerama.com/photos/305922329_781x781_16.jpg" style="width: 90%; height: auto;"><br><p id=""></p></div>
-            </div>
             <div id="stavba3">
-                <div class="buildthings" id="" onclick=""><h3 class="building_title">ROZDĚLANÁ PRÁCE</h3><img src="https://www.zonerama.com/photos/305922329_781x781_16.jpg" style="width: 90%; height: auto;"><br><p id=""></p></div>
+                <div class="buildthings" id="barvy" onclick="postav_barvy()"><h3 class="building_title">Barvy a omítka</h3><img src="https://eu.zonerama.com/photos/310087203_607x607.jpg" style="width: 90%; height: auto;"><br><p id="cenabarvy">Cena: 230mil coinů</p></div>
             </div>
             <button class="closewindow" onclick="zpet_rekonstrukce()">Předchozí</button>
             <button class="closewindow" onclick="dalsi_rekonstrukce()">Další</button>
@@ -72,14 +74,13 @@
         </div>
     </div>
     <div class="panel">
-        <table>
-            <tr><h2 class="text" style="text-align: center;">Informace pro Vás:</h2></tr>
-            <tr>
-                <td><h3><p class="text"><span id="coiny">0</span><span id="sklonovani_coiny"> coinů</span></p></h3></td>
-                <td><h3><p id="vyroba" class="text">0 coinů/s</p></h3></td>
-                <td><h3><p class="text">Zrekonstruováno: <span id="postup">0</span>%</p></h3></td>
-            </tr>
-        </table>
+        <h2 class="text" style="text-align: center;">Informace pro Vás:</h2>
+                <div class="panel_info">
+                    <div><h3><p class="text"><span id="coiny">0</span><span id="sklonovani_coiny"> coinů</span></p></h3></div>
+                    <div><h3><p id="vyroba" class="text">0 coinů/s</p></h3></div>
+                    <div><h3><p class="text">Postup: <span id="postup">0</span>%</p></h3></div>
+                    <div><h3 class="text">Kód: ONE</h3></div>
+                </div>
     </div>
 </div>
 <script src="game.js"></script>
