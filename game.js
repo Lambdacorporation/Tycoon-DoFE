@@ -14,9 +14,14 @@ var prijem_10000 = 10000;
 var cena_prijem_10000 = 140000;
 var prijem_100k = 100000;
 var cena_prijem_100k = 1200000;
+
+var cena_polystyren = 30000000;
+var cena_obklady = 40000000;
 var cena_oken = 85000000;
+var cena_technika = 100000000;
 var cena_strechy = 160500000;
 var cena_podlaha = 110000000;
+var cena_barvy = 230000000;
 
 var cena_zakladdelnik = 50000;
 var cena_strednidelnik = 1000000;
@@ -245,7 +250,45 @@ function ok_penize(){
     document.getElementById("chybapenize").style.visibility = "hidden";
     document.getElementById("all").style.filter = "";
 }
-
+//Stavba
+//Hráč si kupuje polystyren
+var koupeno_polystyren = false;
+function postav_polystyren(){
+    if (koupeno_polystyren){
+        document.getElementById("chyba_nedostupne").style.visibility = "visible";
+        
+        return;
+    }
+    if (coiny < cena_polystyren){
+        document.getElementById("chybapenize").style.visibility = "visible";
+        
+        return;
+    }
+    coiny -= cena_polystyren;
+    koupeno_polystyren = true;
+    document.getElementById("coiny").innerHTML = coiny;
+    document.getElementById("cenapolystyren").innerHTML = "ZAKOUPENO";
+    
+}
+//Hráč si kupuje obklady
+var koupeno_obklady = false;
+function postav_obklady(){
+    if (koupeno_obklady){
+        document.getElementById("chyba_nedostupne").style.visibility = "visible";
+        
+        return;
+    }
+    if (coiny < cena_obklady){
+        document.getElementById("chybapenize").style.visibility = "visible";
+        
+        return;
+    }
+    coiny -= cena_obklady;
+    koupeno_obklady = true;
+    document.getElementById("coiny").innerHTML = coiny;
+    document.getElementById("cenaobklady").innerHTML = "ZAKOUPENO";
+    
+}
 //Hráč si kupuje okna
 var koupeno_okna = false;
 function postav_okna(){
@@ -264,6 +307,22 @@ function postav_okna(){
     document.getElementById("coiny").innerHTML = coiny;
     document.getElementById("cenaokna").innerHTML = "ZAKOUPENO";
     
+}
+//Hráč si pronajímá techniku
+var koupeno_technika = false;
+function postav_technika(){
+    if (koupeno_technika){
+        document.getElementById("chyba_nedostupne").style.visibility = "visible";
+        return;
+    }
+    if (coiny < cena_technika){
+        document.getElementById("chybapenize").style.visibility = "visible";
+        return;
+    }
+    coiny -= cena_technika;
+    koupeno_technika = true;
+    document.getElementById("coiny").innerHTML = coiny;
+    document.getElementById("cenatechnika").innerHTML = "ZAKOUPENO";
 }
 //Hráč si kupuje střechu
 var koupeno_strecha = false;
@@ -297,10 +356,28 @@ function postav_podlaha(){
     document.getElementById("coiny").innerHTML = coiny;
     document.getElementById("cenapodlaha").innerHTML = "ZAKOUPENO";
 }
+//Hráč si kupuje barvy a omítku
+var koupeno_barvy = false;
+function postav_barvy(){
+    if (koupeno_barvy){
+        document.getElementById("chyba_nedostupne").style.visibility = "visible";
+        return;
+    }
+    if (coiny < cena_barvy){
+        document.getElementById("chybapenize").style.visibility = "visible";
+        return;
+    }
+    coiny -= cena_barvy;
+    koupeno_barvy = true;
+    document.getElementById("coiny").innerHTML = coiny;
+    document.getElementById("cenabarvy").innerHTML = "ZAKOUPENO";
+}
 //Dělníci
 //Hráč si může zaměstnat dělníka
-if ((koupeno_okna)&&(koupeno_podlaha)&&(koupeno_strecha)){
-    document.getElementById("chyba_nemuzestavet").visibility = "hidden";
+function zamestnat_delnika(){
+    if ((koupeno_polystyren)&&(koupeno_obklady)&&(koupeno_okna)&&(koupeno_technika)&&(koupeno_podlaha)&&(koupeno_strecha)&&(koupeno_barvy)){
+        document.getElementById("chyba_nemuzestavet").visibility = "hidden";
+    }
 }
 //Dělník Franta
 var pocet_zakladdelnik = 0;
@@ -351,6 +428,7 @@ function ok_prohra(){
 //Výhra
 function vyhra(){
     if (postup >= 100){
+        document.getElementById("vyhra").style.visibility = "visible";
         return;
     }
 }
@@ -375,6 +453,7 @@ function aktualizovatprijem(){
 window.setInterval(function() {
     aktualizovatprijem();
     zmena_okna();
+    zamestnat_delnika();
 }, 0);
 //nastavuje interval 1 sekundu pro každý výdělek
 window.setInterval(function() {
