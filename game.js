@@ -1,6 +1,8 @@
 //vypocet coinů/s
 var vyroba = 0;
 var sklonovani_vyroba = "coinů"
+
+var zk;
 //definování cen
 var prijem_1 = 1;
 var cena_prijem_1 = 10;
