@@ -197,7 +197,7 @@ div.buildthings:hover{
 #btc_button:hover{
     background-color: red;
 }
-#chyba_nedostupne, #prohra, #chybapenize {
+#chyba_nedostupne, #prohra, #chybapenize, #chybadelnik {
     visibility: hidden;
     width: auto;
     height: auto;
@@ -232,7 +232,7 @@ div.buildthings:hover{
     opacity: 85%;
 }
 #chyba_nemuzestavet {
-    visibility: visible;
+    visibility: hidden;
     width: 100%;
     height: 100%;
     background-color: #000;

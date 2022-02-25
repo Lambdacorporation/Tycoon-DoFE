@@ -1,7 +1,7 @@
 //vypocet coinů/s
 var vyroba = 0;
 var sklonovani_vyroba = "coinů"
-//definování cen
+//definování cen a příjmů
 var prijem_1 = 1;
 var cena_prijem_1 = 10;
 var prijem_10 = 10;
@@ -14,7 +14,7 @@ var prijem_10000 = 10000;
 var cena_prijem_10000 = 140000;
 var prijem_100k = 100000;
 var cena_prijem_100k = 1200000;
-
+//definování cen materiálů
 var cena_polystyren = 30000000;
 var cena_obklady = 40000000;
 var cena_oken = 85000000;
@@ -22,7 +22,15 @@ var cena_technika = 100000000;
 var cena_strechy = 160500000;
 var cena_podlaha = 110000000;
 var cena_barvy = 230000000;
-
+//proměnné určující, jestli si hráč koupil materiály nebo ne
+var koupeno_polystyren = false;
+var koupeno_obklady = false;
+var koupeno_okna = false;
+var koupeno_technika = false;
+var koupeno_podlaha = false;
+var koupeno_strecha = false;
+var koupeno_barvy = false;
+//definování cen dělníků v coiny/s
 var cena_zakladdelnik = 50000;
 var cena_strednidelnik = 1000000;
 var cena_nejdelnik = 50000000;
@@ -129,7 +137,7 @@ function zpet_rekonstrukce(){
 }
 
 //výdělek klikáním
-var coiny = 0;
+var coiny = 10000000000;
 var prijem = 1;
 var sklonovani = " coinů";
 function pracuj(){
@@ -248,11 +256,11 @@ function koupit_prijem_100k(){
 function ok_penize(){
     document.getElementById("chyba_nedostupne").style.visibility = "hidden";
     document.getElementById("chybapenize").style.visibility = "hidden";
+    document.getElementById("chybadelnik").style.visibility = "hidden";
     document.getElementById("all").style.filter = "";
 }
 //Stavba
 //Hráč si kupuje polystyren
-var koupeno_polystyren = false;
 function postav_polystyren(){
     if (koupeno_polystyren){
         document.getElementById("chyba_nedostupne").style.visibility = "visible";
@@ -268,10 +276,9 @@ function postav_polystyren(){
     koupeno_polystyren = true;
     document.getElementById("coiny").innerHTML = coiny;
     document.getElementById("cenapolystyren").innerHTML = "ZAKOUPENO";
-    
+    zamestnat_delnika();
 }
 //Hráč si kupuje obklady
-var koupeno_obklady = false;
 function postav_obklady(){
     if (koupeno_obklady){
         document.getElementById("chyba_nedostupne").style.visibility = "visible";
@@ -287,10 +294,9 @@ function postav_obklady(){
     koupeno_obklady = true;
     document.getElementById("coiny").innerHTML = coiny;
     document.getElementById("cenaobklady").innerHTML = "ZAKOUPENO";
-    
+    zamestnat_delnika();
 }
 //Hráč si kupuje okna
-var koupeno_okna = false;
 function postav_okna(){
     if (koupeno_okna){
         document.getElementById("chyba_nedostupne").style.visibility = "visible";
@@ -306,10 +312,9 @@ function postav_okna(){
     koupeno_okna = true;
     document.getElementById("coiny").innerHTML = coiny;
     document.getElementById("cenaokna").innerHTML = "ZAKOUPENO";
-    
+    zamestnat_delnika();
 }
 //Hráč si pronajímá techniku
-var koupeno_technika = false;
 function postav_technika(){
     if (koupeno_technika){
         document.getElementById("chyba_nedostupne").style.visibility = "visible";
@@ -323,9 +328,9 @@ function postav_technika(){
     koupeno_technika = true;
     document.getElementById("coiny").innerHTML = coiny;
     document.getElementById("cenatechnika").innerHTML = "ZAKOUPENO";
+    zamestnat_delnika();
 }
 //Hráč si kupuje střechu
-var koupeno_strecha = false;
 function postav_strecha(){
     if (koupeno_strecha){
         document.getElementById("chyba_nedostupne").style.visibility = "visible";
@@ -339,9 +344,9 @@ function postav_strecha(){
     koupeno_strecha = true;
     document.getElementById("coiny").innerHTML = coiny;
     document.getElementById("cenastrecha").innerHTML = "ZAKOUPENO";
+    zamestnat_delnika();
 }
 //Hráč si kupuje podlahu
-var koupeno_podlaha = false;
 function postav_podlaha(){
     if (koupeno_podlaha){
         document.getElementById("chyba_nedostupne").style.visibility = "visible";
@@ -355,9 +360,9 @@ function postav_podlaha(){
     koupeno_podlaha = true;
     document.getElementById("coiny").innerHTML = coiny;
     document.getElementById("cenapodlaha").innerHTML = "ZAKOUPENO";
+    zamestnat_delnika();
 }
 //Hráč si kupuje barvy a omítku
-var koupeno_barvy = false;
 function postav_barvy(){
     if (koupeno_barvy){
         document.getElementById("chyba_nedostupne").style.visibility = "visible";
@@ -371,11 +376,16 @@ function postav_barvy(){
     koupeno_barvy = true;
     document.getElementById("coiny").innerHTML = coiny;
     document.getElementById("cenabarvy").innerHTML = "ZAKOUPENO";
+    zamestnat_delnika();
 }
 //Dělníci
 //Hráč si může zaměstnat dělníka
+var muzezamestnat = false;
 function zamestnat_delnika(){
-    if ((koupeno_polystyren)&&(koupeno_obklady)&&(koupeno_okna)&&(koupeno_technika)&&(koupeno_podlaha)&&(koupeno_strecha)&&(koupeno_barvy)){
+    if (koupeno_polystyren && koupeno_obklady && koupeno_okna && koupeno_technika && koupeno_podlaha && koupeno_strecha && koupeno_barvy){
+        muzezamestnat = true;
+    }
+    if (muzezamestnat){
         document.getElementById("chyba_nemuzestavet").visibility = "hidden";
     }
 }
@@ -383,6 +393,10 @@ function zamestnat_delnika(){
 var pocet_zakladdelnik = 0;
 var rychlost_zakladdelnik = 0.0001;
 function kup_zakladdelnik (){
+    if (!muzezamestnat){
+        document.getElementById("chybadelnik").style.visibility = "visible";
+        return;
+    }
     if (vyroba < cena_zakladdelnik){
         document.getElementById("chybapenize").style.visibility = "visible";
         return;
@@ -393,6 +407,10 @@ function kup_zakladdelnik (){
 var pocet_strednidelnik = 0;
 var rychlost_strednidelnik = 0.01;
 function kup_strednidelnik (){
+    if (!muzezamestnat){
+        document.getElementById("chybadelnik").style.visibility = "visible";
+        return;
+    }
     if (vyroba < cena_strednidelnik){
         document.getElementById("chybapenize").style.visibility = "visible";
         return;
@@ -403,6 +421,10 @@ function kup_strednidelnik (){
 var pocet_nejdelnik = 0;
 var rychlost_nejdelnik = 1;
 function kup_nejdelnik (){
+    if (!muzezamestnat){
+        document.getElementById("chybadelnik").style.visibility = "visible";
+        return;
+    }
     if (vyroba < cena_nejdelnik){
         document.getElementById("chybapenize").style.visibility = "visible";
         return;
@@ -429,13 +451,12 @@ function ok_prohra(){
 function vyhra(){
     if (postup >= 100){
         document.getElementById("vyhra").style.visibility = "visible";
-        return;
     }
 }
 //aktualizování příjmu
 function aktualizovatprijem(){
     prijmy = (prijem_1*pocet_prijem_1)+(prijem_10*pocet_prijem_10)+(prijem_100*pocet_prijem_100)+(prijem_1000*pocet_prijem_1000)+(prijem_10000*pocet_prijem_10000)+(prijem_100k*pocet_prijem_100k);
-    odecty = (cena_zakladdelnik*pocet_zakladdelnik)+(cena_strednidelnik*pocet_strednidelnik)+(pocet_nejdelnik*rychlost_nejdelnik);
+    odecty = (cena_zakladdelnik*pocet_zakladdelnik)+(cena_strednidelnik*pocet_strednidelnik)+(pocet_nejdelnik*cena_nejdelnik);
     vyroba = prijmy - odecty;
     if (vyroba == 1) sklonovani_vyroba = "coin";
     if ((vyroba >= 2)&&(vyroba < 5)) sklonovani_vyroba = "coiny";
@@ -453,11 +474,11 @@ function aktualizovatprijem(){
 window.setInterval(function() {
     aktualizovatprijem();
     zmena_okna();
-    zamestnat_delnika();
 }, 0);
 //nastavuje interval 1 sekundu pro každý výdělek
 window.setInterval(function() {
     prohra();
+    vyhra();
     dostat_prijem();
     postup_pridat();
 }, 1000);
