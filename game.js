@@ -470,7 +470,7 @@ function aktualizovatprijem(){
     if (coiny >= 1000000) document.getElementById("coiny").innerHTML = Math.round(coiny/100000)/10 + "mil";
     if (coiny >= 1000000000) document.getElementById("coiny").innerHTML = Math.round(coiny/100000000)/10 + "mld";
 }
-
+//aktualizace okna
 window.setInterval(function() {
     aktualizovatprijem();
     zmena_okna();

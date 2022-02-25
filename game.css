@@ -231,6 +231,7 @@ div.buildthings:hover{
     z-index: 2;
     opacity: 85%;
 }
+/*
 #chyba_nemuzestavet {
     visibility: hidden;
     width: 100%;
@@ -243,7 +244,7 @@ div.buildthings:hover{
     z-index: 1;
     opacity: 70%;
     position: absolute;
-}
+}*/
 #delnici_prekryti{
     position: relative;
     z-index: 1;
