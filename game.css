@@ -197,7 +197,7 @@ div.buildthings:hover{
 #btc_button:hover{
     background-color: red;
 }
-#chyba_nedostupne, #prohra, #chybapenize {
+#chyba_nedostupne, #prohra, #chybapenize, #chybadelnik {
     visibility: hidden;
     width: auto;
     height: auto;
@@ -231,8 +231,9 @@ div.buildthings:hover{
     z-index: 2;
     opacity: 85%;
 }
+/*
 #chyba_nemuzestavet {
-    visibility: visible;
+    visibility: hidden;
     width: 100%;
     height: 100%;
     background-color: #000;
@@ -243,7 +244,7 @@ div.buildthings:hover{
     z-index: 1;
     opacity: 70%;
     position: absolute;
-}
+}*/
 #delnici_prekryti{
     position: relative;
     z-index: 1;
