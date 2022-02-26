@@ -137,7 +137,7 @@ function zpet_rekonstrukce(){
 }
 
 //výdělek klikáním
-var coiny = 10000000000;
+var coiny = 0;
 var prijem = 1;
 var sklonovani = " coinů";
 function pracuj(){
