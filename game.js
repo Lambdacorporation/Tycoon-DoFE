@@ -34,7 +34,11 @@ var koupeno_barvy = false;
 var cena_zakladdelnik = 50000;
 var cena_strednidelnik = 1000000;
 var cena_nejdelnik = 50000000;
-
+//nápověda
+//Hráč si chce zobrazit nápovědu
+function infozobraz(){
+    document.getElementById("info_velke").style.visibility = "visible";
+}
 //Hráč chce rozbalit nebo skrýt obrázek budovy
 var skryto = true;
 var a = document.getElementById("budova_obraz").width;
@@ -137,7 +141,7 @@ function zpet_rekonstrukce(){
 }
 
 //výdělek klikáním
-var coiny = 10000000000;
+var coiny = 0;
 var prijem = 1;
 var sklonovani = " coinů";
 function pracuj(){
@@ -257,6 +261,7 @@ function ok_penize(){
     document.getElementById("chyba_nedostupne").style.visibility = "hidden";
     document.getElementById("chybapenize").style.visibility = "hidden";
     document.getElementById("chybadelnik").style.visibility = "hidden";
+    document.getElementById("info_velke").style.visibility = "hidden";
     document.getElementById("all").style.filter = "";
 }
 //Stavba
