@@ -39,6 +39,27 @@ var cena_nejdelnik = 50000000;
 function infozobraz(){
     document.getElementById("info_velke").style.visibility = "visible";
 }
+function info111(){document.getElementById("info111").style.visibility = "visible";}
+function info112(){document.getElementById("info112").style.visibility = "visible";}
+function info113(){document.getElementById("info113").style.visibility = "visible";}
+
+function info121(){document.getElementById("info121").style.visibility = "visible";}
+function info122(){document.getElementById("info122").style.visibility = "visible";}
+function info123(){document.getElementById("info123").style.visibility = "visible";}
+function info131(){document.getElementById("info131").style.visibility = "visible";}
+
+function info211(){document.getElementById("info211").style.visibility = "visible";}
+function info212(){document.getElementById("info212").style.visibility = "visible";}
+function info213(){document.getElementById("info213").style.visibility = "visible";}
+
+function info221(){document.getElementById("info221").style.visibility = "visible";}
+function info222(){document.getElementById("info222").style.visibility = "visible";}
+function info223(){document.getElementById("info223").style.visibility = "visible";}
+function info231(){document.getElementById("info231").style.visibility = "visible";}
+
+function info311(){document.getElementById("info311").style.visibility = "visible";}
+function info312(){document.getElementById("info312").style.visibility = "visible";}
+function info313(){document.getElementById("info313").style.visibility = "visible";}
 //Hráč chce rozbalit nebo skrýt obrázek budovy
 var skryto = true;
 var a = document.getElementById("budova_obraz").width;
@@ -261,7 +282,25 @@ function ok_penize(){
     document.getElementById("chyba_nedostupne").style.visibility = "hidden";
     document.getElementById("chybapenize").style.visibility = "hidden";
     document.getElementById("chybadelnik").style.visibility = "hidden";
-    document.getElementById("info_velke").style.visibility = "hidden";
+    document.getElementById("info_start").style.visibility = "hidden";
+//Na zkrácení se pracuje
+    document.getElementById("info111").style.visibility = "hidden";
+    document.getElementById("info112").style.visibility = "hidden";
+    document.getElementById("info113").style.visibility = "hidden";
+    document.getElementById("info121").style.visibility = "hidden";
+    document.getElementById("info122").style.visibility = "hidden";
+    document.getElementById("info123").style.visibility = "hidden";
+    document.getElementById("info131").style.visibility = "hidden";
+    document.getElementById("info211").style.visibility = "hidden";
+    document.getElementById("info212").style.visibility = "hidden";
+    document.getElementById("info213").style.visibility = "hidden";
+    document.getElementById("info221").style.visibility = "hidden";
+    document.getElementById("info222").style.visibility = "hidden";
+    document.getElementById("info223").style.visibility = "hidden";
+    document.getElementById("info231").style.visibility = "hidden";
+    document.getElementById("info311").style.visibility = "hidden";
+    document.getElementById("info312").style.visibility = "hidden";
+    document.getElementById("info313").style.visibility = "hidden";
     document.getElementById("all").style.filter = "";
 }
 //Stavba
@@ -389,9 +428,6 @@ var muzezamestnat = false;
 function zamestnat_delnika(){
     if (koupeno_polystyren && koupeno_obklady && koupeno_okna && koupeno_technika && koupeno_podlaha && koupeno_strecha && koupeno_barvy){
         muzezamestnat = true;
-    }
-    if (muzezamestnat){
-        document.getElementById("chyba_nemuzestavet").visibility = "hidden";
     }
 }
 //Dělník Franta
