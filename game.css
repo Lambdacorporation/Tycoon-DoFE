@@ -6,6 +6,7 @@ body{
     height: 100%;
     background-color: black;
     position: relative;
+    z-index: 0;
 }
 .body{
     text-align: center;
@@ -197,7 +198,7 @@ div.buildthings:hover{
 #btc_button:hover{
     background-color: red;
 }
-#chyba_nedostupne, #prohra, #chybapenize, #chybadelnik, #info_velke {
+#chyba_nedostupne, #prohra, #chybapenize, #chybadelnik {
     visibility: hidden;
     width: auto;
     height: auto;
@@ -213,6 +214,40 @@ div.buildthings:hover{
     position: fixed;
     z-index: 2;
     opacity: 85%;
+}
+#info_start {
+    visibility: visible;
+    width: auto;
+    height: auto;
+    background-color: #000;
+    color: #fff;
+    right: 15%;
+    left: 15%;
+    bottom: auto;
+    top: 35%;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 8px;
+    position: fixed;
+    z-index: 2;
+    opacity: 100%;
+}
+.info_button {
+    visibility: hidden;
+    width: auto;
+    height: auto;
+    background-color: #000;
+    color: #fff;
+    right: 15%;
+    left: 15%;
+    bottom: auto;
+    top: 40%;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 8px;
+    position: fixed;
+    z-index: 2;
+    opacity: 95%;
 }
 #vyhra {
     visibility: hidden;
@@ -244,11 +279,7 @@ div.buildthings:hover{
     opacity: 70%;
     position: absolute;
 }
-#delnici_prekryti{
-    position: relative;
-    z-index: 1;
-}
-#info{
+.info{
     color: #000;
     right: 0;
     left: auto;

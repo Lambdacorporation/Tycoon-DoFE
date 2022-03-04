@@ -7,15 +7,18 @@
     <link rel="stylesheet" href="game.css">
 </head>
 <body>
+    <span id="info_start">V této hře máte za úkol rekonstruovat budovu Gymnázia Třebíč.<br> Klikejte na tlačítko <b class="name">Získej coin</b> pro výdělek.<br> Když budete mít dostatek financí, můžete si koupit automatické výdělky v sekci <b class="name">Vydělávací příležitosti</b> (nikdo se nechce předřít samozřejmě :)).<br> Více informací naleznete u každého tlačítka zvlášť po kliknutí na ikonu <b class="name">ⓘ</b>.<br><button id="pracuj" onclick="ok_penize()">OK</button></span>
     <span id="vyhra">Gratulujeme, podařilo se Vám vyhrát první level této hry.<br> Tato hra je stále ve vývoji, a tak je hotový pouze tento level.<br> Děkujeme, že jste se stal Beta testerem této hry.<br> Po kliknutí na tlačítko se Váš postup resetuje!<br><button id="pracuj" onclick="ok_prohra()">OK</button></span>
     <span id="prohra">Litujeme, ale dostal jste školu do dluhů. Vaše hra tímto končí. Po kliknutí na tlačítko se Váš postup resetuje.<br><button id="pracuj" onclick="ok_prohra()">OK</button></span>
     <span id="chyba_nedostupne">Bohužel tato položka je již vyprodaná.<br><button id="pracuj" onclick="ok_penize()">OK</button></span>
     <span id="chybapenize">Litujeme, ale na toto ještě nemáte peníze.<br><button id="pracuj" onclick="ok_penize()">OK</button></span>
     <span id="chybadelnik">Litujeme, ale abyste si mohl najmout dělníka, tak potřebujete mít nakoupené všechny věci potřebné k rekonstrukci.<br><button id="pracuj" onclick="ok_penize()">OK</button></span>
-    <span id="info_velke">Nápověda se právě vytváří, omlouváme se za komplikace.<br><button id="pracuj" onclick="ok_penize()">OK</button></span>
+    <span class="info_button" id="info111"><b class="name">Dary od rodičů</b><br>Pokud máte 100 coinů tak velmi dobrá volba.<br>Budete dostávat 1 coin za sekundu.<br>Rodiče základ života i školy.<br><button id="pracuj" onclick="ok_penize()">OK</button></span>
+    <span class="info_button" id="info112"><b class="name">Dary od malých firem</b><br>Pokud máte 500 coinů tak velmi dobrá volba.<br>Budete dostávat 10 coinů za sekundu.<br>Malé firmy jsou perfektní, peníze jim určitě nebudou chybět.<br><button id="pracuj" onclick="ok_penize()">OK</button></span>
+    <span class="info_button" id="info113"><b class="name">Dotace od města Třebíč</b><br>Pokud máte 2 000 coinů tak velmi dobrá volba.<br>Budete dostávat 100 coin za sekundu.<br>Třebíč, malebné město s velkým množstvím peněz.<br><button id="pracuj" onclick="ok_penize()">OK</button></span>
 <div id="all">
     <div class="header">
-        <h1 class="name">Rekonstrukce GTR</h1>
+        <h1 class="name">Rekonstrukce GTR (ALPHA)</h1>
     </div>
     <div class="budova" id="budova">
         <h2 class="name" style="margin-bottom: 1px;">Je potřeba opravit tato budova:</h2>
@@ -27,18 +30,18 @@
         <div class="jobs">
             <h2 class="name">Vydělávací příležitosti:</h2>
                 <div id="vydelky1">
-                    <div class="buildthings" id="prijem_1" onclick="koupit_prijem_1()"><span id="info" onclick="infozobraz()">ⓘ</span><h3 class="building_title">Dary od rodičů</h3><img src="https://www.zonerama.com/photos/306620945_783x781_16.jpg" style="width: 90%; height: auto;"><br><p>Cena: 100 coinů</p><p>Zisk: 1 coin/s</p></div>
-                    <div class="buildthings" id="prijem_10" onclick="koupit_prijem_10()"><span id="info" onclick="infozobraz()">ⓘ</span><h3 class="building_title">Dary od malých firem</h3><img src="https://www.zonerama.com/photos/307057927_520x520_16.jpg" style="width: 90%; height: auto;"><br><p>Cena: 500 coinů</p><p>Zisk: 10 coinů/s</p></div>
-                    <div class="buildthings" id="prijem_100" onclick="koupit_prijem_100()"><span id="info" onclick="infozobraz()">ⓘ</span><h3 class="building_title">Dotace od města Třebíč</h3><img src="https://www.zonerama.com/photos/307122871_901x817.jpg" style="width: 90%; height: auto;"><br><p>Cena: 2k coinů</p><p>Zisk: 100 coinů/s</p></div>
+                    <div class="buildthings" id="prijem_1" onclick="koupit_prijem_1()"><span class="info" onclick="info111()">ⓘ</span><h3 class="building_title">Dary od rodičů</h3><img src="https://www.zonerama.com/photos/306620945_783x781_16.jpg" style="width: 90%; height: auto;"><br><p>Cena: 100 coinů</p><p>Zisk: 1 coin/s</p></div>
+                    <div class="buildthings" id="prijem_10" onclick="koupit_prijem_10()"><span class="info" onclick="info112()">ⓘ</span><h3 class="building_title">Dary od malých firem</h3><img src="https://www.zonerama.com/photos/307057927_520x520_16.jpg" style="width: 90%; height: auto;"><br><p>Cena: 500 coinů</p><p>Zisk: 10 coinů/s</p></div>
+                    <div class="buildthings" id="prijem_100" onclick="koupit_prijem_100()"><span class="info" onclick="info113()">ⓘ</span><h3 class="building_title">Dotace od města Třebíč</h3><img src="https://www.zonerama.com/photos/307122871_901x817.jpg" style="width: 90%; height: auto;"><br><p>Cena: 2k coinů</p><p>Zisk: 100 coinů/s</p></div>
                 </div>
                 <div id="vydelky2">
-                    <div class="buildthings" id="prijem_1000" onclick="koupit_prijem_1000()"><span id="info" onclick="infozobraz()">ⓘ</span><h3 class="building_title">Dotace od kraje Vysočina</h3><img src="https://eu.zonerama.com/photos/307899384_270x270_16.jpg" style="width: 90%; height: auto;"><br><p>Cena: 15k coinů</p><p>Zisk: 1k coinů/s</p></div>
-                    <div class="buildthings" id="prijem_10000" onclick="koupit_prijem_10000()"><span id="info" onclick="infozobraz()">ⓘ</span><h3 class="building_title">Dotace od MŠMT</h3><img src="https://eu.zonerama.com/photos/307912387_250x250_16.jpg" style="width: 90%; height: auto;"><br><p>Cena: 140k coinů</p><p>Zisk: 10k coinů/s</p></div>
-                    <div class="buildthings"><span id="info" onclick="infozobraz()">ⓘ</span><h3 class="building_title">Bitcoin</h3><img src="https://eu.zonerama.com/photos/307901321_781x781_16_timestamp(637790569718870000).jpg" style="width: 90%; height: auto;"><br><p>Cena: <span id="btc_cena">0</span> coinů</p><p>Počet vašich BTC: <span id="btc_pocet">0</span></p><button id="btc_button" onclick="koupit_btc()">Koupit</button><button id="btc_button" onclick="prodat_btc()">Prodat</button></div>
+                    <div class="buildthings" id="prijem_1000" onclick="koupit_prijem_1000()"><span class="info" onclick="info121()">ⓘ</span><h3 class="building_title">Dotace od kraje Vysočina</h3><img src="https://eu.zonerama.com/photos/307899384_270x270_16.jpg" style="width: 90%; height: auto;"><br><p>Cena: 15k coinů</p><p>Zisk: 1k coinů/s</p></div>
+                    <div class="buildthings" id="prijem_10000" onclick="koupit_prijem_10000()"><span class="info" onclick="info122()">ⓘ</span><h3 class="building_title">Dotace od MŠMT</h3><img src="https://eu.zonerama.com/photos/307912387_250x250_16.jpg" style="width: 90%; height: auto;"><br><p>Cena: 140k coinů</p><p>Zisk: 10k coinů/s</p></div>
+                    <div class="buildthings"><span class="info" onclick="info123()">ⓘ</span><h3 class="building_title">Bitcoin</h3><img src="https://eu.zonerama.com/photos/307901321_781x781_16_timestamp(637790569718870000).jpg" style="width: 90%; height: auto;"><br><p>Cena: <span id="btc_cena">0</span> coinů</p><p>Počet vašich BTC: <span id="btc_pocet">0</span></p><button id="btc_button" onclick="koupit_btc()">Koupit</button><button id="btc_button" onclick="prodat_btc()">Prodat</button></div>
                     
                 </div>
                 <div id="vydelky3">
-                    <div class="buildthings" id="prijem_100k" onclick="koupit_prijem_100k()"><span id="info" onclick="infozobraz()">ⓘ</span><h3 class="building_title">Dotace od velkých firem</h3><img src="https://eu.zonerama.com/photos/308394657_300x285_16.jpg" style="width: 90%; height: auto;"><br><p>Cena: 1.2mil coinů</p><p>Zisk: 100k coinů/s</p></div>
+                    <div class="buildthings" id="prijem_100k" onclick="koupit_prijem_100k()"><span class="info" onclick="info131()">ⓘ</span><h3 class="building_title">Dotace od velkých firem</h3><img src="https://eu.zonerama.com/photos/308394657_300x285_16.jpg" style="width: 90%; height: auto;"><br><p>Cena: 1.2mil coinů</p><p>Zisk: 100k coinů/s</p></div>
                 </div>
             <button class="closewindow" onclick="zpet()">Předchozí</button>
             <button class="closewindow" onclick="dalsi()">Další</button>
@@ -47,32 +50,27 @@
     <div id="building">
         <h2 class="name">Věci potřebné pro rekonstrukci</h2>
             <div id="stavba1">
-                <div class="buildthings" id="polystyren" onclick="postav_polystyren()"><span id="info" onclick="infozobraz()">ⓘ</span><h3 class="building_title">Polystyren</h3><img src="https://eu.zonerama.com/photos/310086275_853x853.jpg" style="width: 90%; height: auto;"><br><p id="cenapolystyren">Cena: 30mil coinů</p></div>
-                <div class="buildthings" id="obklady" onclick="postav_obklady()"><span id="info" onclick="infozobraz()">ⓘ</span><h3 class="building_title">Obklady</h3><img src="https://eu.zonerama.com/photos/310086022_781x781_16.jpg" style="width: 90%; height: auto;"><br><p id="cenaobklady">Cena: 40mil coinů</p></div>
-                <div class="buildthings" id="okna" onclick="postav_okna()"><span id="info" onclick="infozobraz()">ⓘ</span><h3 class="building_title">Okna</h3><img src="https://www.zonerama.com/photos/305922329_781x781_16.jpg" style="width: 90%; height: auto;"><br><p id="cenaokna">Cena: 85mil coinů</p></div>
+                <div class="buildthings" id="polystyren" onclick="postav_polystyren()"><span class="info" onclick="info211()">ⓘ</span><h3 class="building_title">Polystyren</h3><img src="https://eu.zonerama.com/photos/310086275_853x853.jpg" style="width: 90%; height: auto;"><br><p id="cenapolystyren">Cena: 30mil coinů</p></div>
+                <div class="buildthings" id="obklady" onclick="postav_obklady()"><span class="info" onclick="info212()">ⓘ</span><h3 class="building_title">Obklady</h3><img src="https://eu.zonerama.com/photos/310086022_781x781_16.jpg" style="width: 90%; height: auto;"><br><p id="cenaobklady">Cena: 40mil coinů</p></div>
+                <div class="buildthings" id="okna" onclick="postav_okna()"><span class="info" onclick="info213()">ⓘ</span><h3 class="building_title">Okna</h3><img src="https://www.zonerama.com/photos/305922329_781x781_16.jpg" style="width: 90%; height: auto;"><br><p id="cenaokna">Cena: 85mil coinů</p></div>
             </div>
             <div id="stavba2">
-                <div class="buildthings" id="technika" onclick="postav_technika()"><span id="info" onclick="infozobraz()">ⓘ</span><h3 class="building_title">Stavební technika</h3><img src="https://eu.zonerama.com/photos/310084933_825x781_16.jpg" style="width: 90%; height: auto;"><br><p id="cenatechnika">Cena: 100mil coinů</p></div>
-                <div class="buildthings" id="podlaha" onclick="postav_podlaha()"><span id="info" onclick="infozobraz()">ⓘ</span><h3 class="building_title">Podlaha</h3><img src="https://eu.zonerama.com/photos/308556789_665x665.jpg" style="width: 90%; height: auto;"><br><p id="cenapodlaha">Cena: 110mil coinů</p></div>
-                <div class="buildthings" id="strecha" onclick="postav_strecha()"><span id="info" onclick="infozobraz()">ⓘ</span><h3 class="building_title">Střecha</h3><img src="https://eu.zonerama.com/photos/308551522_210x210_16.jpg" style="width: 90%; height: auto;"><br><p id="cenastrecha">Cena: 160.5mil coinů</p></div>
+                <div class="buildthings" id="technika" onclick="postav_technika()"><span class="info" onclick="info221()">ⓘ</span><h3 class="building_title">Stavební technika</h3><img src="https://eu.zonerama.com/photos/310084933_825x781_16.jpg" style="width: 90%; height: auto;"><br><p id="cenatechnika">Cena: 100mil coinů</p></div>
+                <div class="buildthings" id="podlaha" onclick="postav_podlaha()"><span class="info" onclick="info222()">ⓘ</span><h3 class="building_title">Podlaha</h3><img src="https://eu.zonerama.com/photos/308556789_665x665.jpg" style="width: 90%; height: auto;"><br><p id="cenapodlaha">Cena: 110mil coinů</p></div>
+                <div class="buildthings" id="strecha" onclick="postav_strecha()"><span class="info" onclick="info223()">ⓘ</span><h3 class="building_title">Střecha</h3><img src="https://eu.zonerama.com/photos/308551522_210x210_16.jpg" style="width: 90%; height: auto;"><br><p id="cenastrecha">Cena: 160.5mil coinů</p></div>
             </div>
             <div id="stavba3">
-                <div class="buildthings" id="barvy" onclick="postav_barvy()"><span id="info" onclick="infozobraz()">ⓘ</span><h3 class="building_title">Barvy a omítka</h3><img src="https://eu.zonerama.com/photos/310087203_607x607.jpg" style="width: 90%; height: auto;"><br><p id="cenabarvy">Cena: 230mil coinů</p></div>
+                <div class="buildthings" id="barvy" onclick="postav_barvy()"><span class="info" onclick="info231()">ⓘ</span><h3 class="building_title">Barvy a omítka</h3><img src="https://eu.zonerama.com/photos/310087203_607x607.jpg" style="width: 90%; height: auto;"><br><p id="cenabarvy">Cena: 230mil coinů</p></div>
             </div>
             <button class="closewindow" onclick="zpet_rekonstrukce()">Předchozí</button>
             <button class="closewindow" onclick="dalsi_rekonstrukce()">Další</button>
     </div>
     <div id="pracovnici">
         <h2 class="name">Dělníci</h2>
-        <div id="delnici_prekryti">
-            <div id="chyba_nemuzestavet">
-                <h2>Tato část se odemkne až nakoupíte všechny věci potřebné k rekonstrukci.</h2>
-            </div>
-            <div id="pracovnici1">
-                <div class="buildthings" id="zakladdelnik" onclick="kup_zakladdelnik()"><span id="info" onclick="infozobraz()">ⓘ</span><h3 class="building_title">Dělník Franta</h3><img src="https://eu.zonerama.com/photos/309467301_228x228_16.jpg" style="width: 90%; height: auto;"><br><p>Cena: 50k coinů/s</p><p>Rychlost: 0.0001%/s</p></div>
-                <div class="buildthings" id="strednidelnik" onclick="kup_strednidelnik()"><span id="info" onclick="infozobraz()">ⓘ</span><h3 class="building_title">Dělník Ondra</h3><img src="https://eu.zonerama.com/photos/309480410_228x228_16.jpg" style="width: 90%; height: auto;"><br><p>Cena: 1mil coinů/s</p><p>Rychlost: 0.01%/s</p></div>
-                <div class="buildthings" id="nejdelnik" onclick="kup_nejdelnik()"><span id="info" onclick="infozobraz()">ⓘ</span><h3 class="building_title">Dělník Ludva</h3><img src="https://eu.zonerama.com/photos/309717738_228x228_16.jpg" style="width: 90%; height: auto;"><br><p>Cena: 50mil coinů/s</p><p>Rychlost: 1%/s</p></div>
-            </div>
+        <div id="pracovnici1">
+            <div class="buildthings" id="zakladdelnik" onclick="kup_zakladdelnik()"><span class="info" onclick="info311()">ⓘ</span><h3 class="building_title">Dělník Franta</h3><img src="https://eu.zonerama.com/photos/309467301_228x228_16.jpg" style="width: 90%; height: auto;"><br><p>Cena: 50k coinů/s</p><p>Rychlost: 0.0001%/s</p></div>
+            <div class="buildthings" id="strednidelnik" onclick="kup_strednidelnik()"><span class="info" onclick="info312()">ⓘ</span><h3 class="building_title">Dělník Ondra</h3><img src="https://eu.zonerama.com/photos/309480410_228x228_16.jpg" style="width: 90%; height: auto;"><br><p>Cena: 1mil coinů/s</p><p>Rychlost: 0.01%/s</p></div>
+            <div class="buildthings" id="nejdelnik" onclick="kup_nejdelnik()"><span class="info" onclick="info313()">ⓘ</span><h3 class="building_title">Dělník Ludva</h3><img src="https://eu.zonerama.com/photos/309717738_228x228_16.jpg" style="width: 90%; height: auto;"><br><p>Cena: 50mil coinů/s</p><p>Rychlost: 1%/s</p></div>
         </div>
     </div>
     <div class="panel">
