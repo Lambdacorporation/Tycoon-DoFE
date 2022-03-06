@@ -39,6 +39,9 @@ var cena_nejdelnik = 50000000;
 function infozobraz(){
     document.getElementById("info_velke").style.visibility = "visible";
 }
+function info2(){document.getElementById("info2").style.visibility = "visible";}
+function info3(){document.getElementById("info3").style.visibility = "visible";}
+
 function info111(){document.getElementById("info111").style.visibility = "visible";}
 function info112(){document.getElementById("info112").style.visibility = "visible";}
 function info113(){document.getElementById("info113").style.visibility = "visible";}
@@ -283,6 +286,9 @@ function ok_penize(){
     document.getElementById("chybapenize").style.visibility = "hidden";
     document.getElementById("chybadelnik").style.visibility = "hidden";
     document.getElementById("info_start").style.visibility = "hidden";
+//Zkoušení zkrácení
+    document.getElementById("info2").style.visibility = "hidden";
+    document.getElementById("info3").style.visibility = "hidden";
 //Na zkrácení se pracuje
     document.getElementById("info111").style.visibility = "hidden";
     document.getElementById("info112").style.visibility = "hidden";

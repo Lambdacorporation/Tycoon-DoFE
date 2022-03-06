@@ -178,6 +178,11 @@ div.buildthings:hover{
     align-items: center;
     display: block;
 }
+.nadpis_pracovnici{
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    grid-column-gap: 0px;
+}
 #pracovnici1{
     display: grid;
     grid-template-columns: repeat(3, 33%);
@@ -241,13 +246,14 @@ div.buildthings:hover{
     right: 15%;
     left: 15%;
     bottom: auto;
-    top: 40%;
+    top: 20%;
+    bottom: 20%;
     text-align: center;
     border-radius: 6px;
     padding: 8px 8px;
     position: fixed;
     z-index: 2;
-    opacity: 95%;
+    opacity: 90%;
 }
 #vyhra {
     visibility: hidden;
