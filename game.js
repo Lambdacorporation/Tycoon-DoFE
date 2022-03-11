@@ -434,6 +434,7 @@ var rychlost_nejdelnik = 1;
 function kup_nejdelnik (){
     if (ludvik_nepracuje){
         ludvik_nepracuje = false;
+        rychlost_nejdelnik = 1;
         document.getElementById("nepracuje").style.visibility = "hidden";
         return;
     }
@@ -447,11 +448,12 @@ function kup_nejdelnik (){
     }
     pocet_nejdelnik += 1;
 }
-var cas_lenost = Math.random()*100000;
+var cas_lenost = Math.random()*200000;
 function lenost (){
     ludvik_nepracuje = true;
+    rychlost_nejdelnik = 0;
     document.getElementById("nepracuje").style.visibility = "visible";
-    cas_lenost = Math.random()*100000;
+    cas_lenost = Math.random()*200000;
 }
 //Aktualizování postupu
 var postup = 0;
