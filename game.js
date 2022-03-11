@@ -39,30 +39,10 @@ var cena_nejdelnik = 50000000;
 function infozobraz(){
     document.getElementById("info_velke").style.visibility = "visible";
 }
+function info1(){document.getElementById("info1").style.visibility = "visible";}
 function info2(){document.getElementById("info2").style.visibility = "visible";}
 function info3(){document.getElementById("info3").style.visibility = "visible";}
 
-function info111(){document.getElementById("info111").style.visibility = "visible";}
-function info112(){document.getElementById("info112").style.visibility = "visible";}
-function info113(){document.getElementById("info113").style.visibility = "visible";}
-
-function info121(){document.getElementById("info121").style.visibility = "visible";}
-function info122(){document.getElementById("info122").style.visibility = "visible";}
-function info123(){document.getElementById("info123").style.visibility = "visible";}
-function info131(){document.getElementById("info131").style.visibility = "visible";}
-
-function info211(){document.getElementById("info211").style.visibility = "visible";}
-function info212(){document.getElementById("info212").style.visibility = "visible";}
-function info213(){document.getElementById("info213").style.visibility = "visible";}
-
-function info221(){document.getElementById("info221").style.visibility = "visible";}
-function info222(){document.getElementById("info222").style.visibility = "visible";}
-function info223(){document.getElementById("info223").style.visibility = "visible";}
-function info231(){document.getElementById("info231").style.visibility = "visible";}
-
-function info311(){document.getElementById("info311").style.visibility = "visible";}
-function info312(){document.getElementById("info312").style.visibility = "visible";}
-function info313(){document.getElementById("info313").style.visibility = "visible";}
 //Hráč chce rozbalit nebo skrýt obrázek budovy
 var skryto = true;
 var a = document.getElementById("budova_obraz").width;
@@ -286,27 +266,10 @@ function ok_penize(){
     document.getElementById("chybapenize").style.visibility = "hidden";
     document.getElementById("chybadelnik").style.visibility = "hidden";
     document.getElementById("info_start").style.visibility = "hidden";
-//Zkoušení zkrácení
+
+    document.getElementById("info1").style.visibility = "hidden";
     document.getElementById("info2").style.visibility = "hidden";
     document.getElementById("info3").style.visibility = "hidden";
-//Na zkrácení se pracuje
-    document.getElementById("info111").style.visibility = "hidden";
-    document.getElementById("info112").style.visibility = "hidden";
-    document.getElementById("info113").style.visibility = "hidden";
-    document.getElementById("info121").style.visibility = "hidden";
-    document.getElementById("info122").style.visibility = "hidden";
-    document.getElementById("info123").style.visibility = "hidden";
-    document.getElementById("info131").style.visibility = "hidden";
-    document.getElementById("info211").style.visibility = "hidden";
-    document.getElementById("info212").style.visibility = "hidden";
-    document.getElementById("info213").style.visibility = "hidden";
-    document.getElementById("info221").style.visibility = "hidden";
-    document.getElementById("info222").style.visibility = "hidden";
-    document.getElementById("info223").style.visibility = "hidden";
-    document.getElementById("info231").style.visibility = "hidden";
-    document.getElementById("info311").style.visibility = "hidden";
-    document.getElementById("info312").style.visibility = "hidden";
-    document.getElementById("info313").style.visibility = "hidden";
     document.getElementById("all").style.filter = "";
 }
 //Stavba
@@ -465,9 +428,15 @@ function kup_strednidelnik (){
     pocet_strednidelnik += 1;
 }
 //Dělník Ludva
+var ludvik_nepracuje = false;
 var pocet_nejdelnik = 0;
 var rychlost_nejdelnik = 1;
 function kup_nejdelnik (){
+    if (ludvik_nepracuje){
+        ludvik_nepracuje = false;
+        document.getElementById("nepracuje").style.visibility = "hidden";
+        return;
+    }
     if (!muzezamestnat){
         document.getElementById("chybadelnik").style.visibility = "visible";
         return;
@@ -477,6 +446,12 @@ function kup_nejdelnik (){
         return;
     }
     pocet_nejdelnik += 1;
+}
+var cas_lenost = Math.random()*100000;
+function lenost (){
+    ludvik_nepracuje = true;
+    document.getElementById("nepracuje").style.visibility = "visible";
+    cas_lenost = Math.random()*100000;
 }
 //Aktualizování postupu
 var postup = 0;
@@ -529,7 +504,10 @@ window.setInterval(function() {
     dostat_prijem();
     postup_pridat();
 }, 1000);
-
+//nastavuje interval pro zlenivění Ludvíčka
+window.setInterval(function() {
+    lenost();
+}, cas_lenost);
 //nastavuje interval 3 sekundy pro cenu bitcoinu
 window.setInterval(function() {
     btc_zmena();
