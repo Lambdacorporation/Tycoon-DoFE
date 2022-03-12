@@ -257,7 +257,7 @@ div.buildthings:hover{
     border-radius: 6px;
     padding: 8px 8px;
     position: fixed;
-    z-index: 2;
+    z-index: 3;
     opacity: 100%;
 }
 .info {
@@ -275,7 +275,7 @@ div.buildthings:hover{
     border-radius: 6px;
     padding: 8px 8px;
     position: fixed;
-    z-index: 2;
+    z-index: 3;
     opacity: 90%;
     vertical-align: middle;
 }
