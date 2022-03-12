@@ -178,12 +178,40 @@ div.buildthings:hover{
     align-items: center;
     display: block;
 }
+.nadpis_pracovnici{
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    grid-column-gap: 0px;
+}
 #pracovnici1{
     display: grid;
     grid-template-columns: repeat(3, 33%);
     grid-column-gap: 2px;
     animation-name: vydelky;
     animation-duration: 1s;
+}
+#nepracuje{
+    visibility: hidden;
+    animation: blik 1s infinite;
+    right: 0;
+    left: auto;
+    bottom: auto;
+    top: 0;
+    text-align: right;
+    margin: 50% 20px;
+    position: absolute;
+    z-index: -1;
+}
+@keyframes blik {
+    0% {
+        color: red;
+    }
+    100% {
+        color: black;
+    }
+    50% {
+        color: red;
+    }
 }
 #btc_button{
     background-color: black;
@@ -232,22 +260,27 @@ div.buildthings:hover{
     z-index: 2;
     opacity: 100%;
 }
-.info_button {
+.info {
     visibility: hidden;
     width: auto;
     height: auto;
     background-color: #000;
     color: #fff;
-    right: 15%;
-    left: 15%;
+    right: 10%;
+    left: 10%;
     bottom: auto;
-    top: 40%;
+    top: 10%;
+    bottom: auto;
     text-align: center;
     border-radius: 6px;
     padding: 8px 8px;
     position: fixed;
     z-index: 2;
-    opacity: 95%;
+    opacity: 90%;
+    vertical-align: middle;
+}
+#napoveda {
+    cursor: pointer;
 }
 #vyhra {
     visibility: hidden;
@@ -278,17 +311,6 @@ div.buildthings:hover{
     z-index: 1;
     opacity: 70%;
     position: absolute;
-}
-.info{
-    color: #000;
-    right: 0;
-    left: auto;
-    bottom: auto;
-    top: 0;
-    text-align: right;
-    margin: 8px 8px;
-    position: fixed;
-    z-index: -1;
 }
 ::-webkit-scrollbar{
     width: 10px;
