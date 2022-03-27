@@ -18,7 +18,7 @@
         <b class="name">Dotace od velkých firem</b><br>Pokud máte 140 000 coinů tak velmi dobrá volba. Budete dostávat 100 000 coin za sekundu. Nejlepší možnost dlouhodobého výdělku.<br><button id="pracuj" onclick="ok_penize()">OK</button></span>
     <span class="info" id="info2"><h2 class="name">Věci potřebné k rekonstrukci</h2><b class="name">Polystyren</b><br>Měkký, levný, dobrý pro zateplení budov.<br><b class="name">Obklady</b><br>Spíše pro vnitřní použití a designování.<br><b class="name">Okna</b><br>Základ každé budovy jsou nová okna a nové dveře. To ostatní je zbytečné :)<br><b class="name">Stavební technika</b><br>Základem rekonstrukce je dobré vybavení, dělníci se tolik nenadřou, a pak jim nebudeme muset tolik platit :)<br>
         <b class="name">Podlaha</b><br>Po čem bychom jinak chodily? Po hlíně? Žijeme v moderní době, potřebujeme podlahu.<br><b class="name">Střecha</b><br>Bez střechy bychom neměli střechu nad hlavou :) Střecha je hlavní část budovy, hned po zdech.<br><b class="name">Barvy a omítka</b><br>Spíše přežitek bez kterého bychom ale nedostali dotace :(<br><button id="pracuj" onclick="ok_penize()">OK</button></span>
-    <span class="info" id="info3"><h2 class="name">Dělníci</h2><b class="name">Dělník Franta</b><br>Pomalý ale pracovitý. Pro započetí rekonstrukce dobrý, ale z dlouhodobého hlediska se nevyplatí.<br><b class="name">Dělník Ondra</b><br>Běžný pracovník co má rád lahváče a je trochu při těle.<br><b class="name">Dělník Ludva</b><br>Ludvíček je pořádný český pracant (není). Když přestane pracovat (objeví se vedle něj blikající vykřičník), tak na něj stačí kliknout.<br><button id="pracuj" onclick="ok_penize()">OK</button></span>
+    <span class="info" id="info3"><h2 class="name">Dělníci</h2><b class="name">Dělník Franta</b><br>Pomalý ale pracovitý. Pro započetí rekonstrukce dobrý, ale z dlouhodobého hlediska se nevyplatí.<br><b class="name">Dělník Ondra</b><br>Běžný pracovník co má rád lahváče a je trochu při těle.<br><b class="name">Dělník Ludva</b><br>Ludvíček je pořádný český pracant (není). Když přestane pracovat (objeví se vedle nadpisu Dělníci vykřičník), tak na něj stačí kliknout.<br><button id="pracuj" onclick="ok_penize()">OK</button></span>
 <div id="all">
     <div class="header">
         <h1 class="name">Rekonstrukce GTR (pre-ALPHA)</h1>
@@ -78,14 +78,20 @@
     </div>
     <div id="pracovnici">
         <div class="nadpis_pracovnici">
-            <div></div>
+            <div><span id="nepracuje"><h2><b>!Ludva</b></h2></span></div>
             <div><h2 class="name">Dělníci</h2></div>
             <div><h2 class="name" id="napoveda" onclick="info3()">ⓘ</h2></div>
         </div>
         <div id="pracovnici1">
             <div class="buildthings" id="zakladdelnik" onclick="kup_zakladdelnik()"><h3 class="building_title">Dělník Franta</h3><img src="https://eu.zonerama.com/photos/309467301_228x228_16.jpg" style="width: 90%; height: auto;"><br><p>Cena: 50k coinů/s</p><p>Rychlost: 0.0001%/s</p></div>
             <div class="buildthings" id="strednidelnik" onclick="kup_strednidelnik()"><h3 class="building_title">Dělník Ondra</h3><img src="https://eu.zonerama.com/photos/309480410_228x228_16.jpg" style="width: 90%; height: auto;"><br><p>Cena: 1mil coinů/s</p><p>Rychlost: 0.01%/s</p></div>
-            <div class="buildthings" id="nejdelnik" onclick="kup_nejdelnik()"><span id="nepracuje"><h1><b>!</b></h1></span><h3 class="building_title">Dělník Ludva</h3><img src="https://eu.zonerama.com/photos/309717738_228x228_16.jpg" style="width: 90%; height: auto;"><br><p>Cena: 50mil coinů/s</p><p>Rychlost: 1%/s</p></div>
+            <div class="buildthings" id="nejdelnik" onclick="kup_nejdelnik()"><h3 class="building_title">Dělník Ludva</h3><img src="https://eu.zonerama.com/photos/309717738_228x228_16.jpg" style="width: 90%; height: auto;"><br><p>Cena: 50mil coinů/s</p><p>Rychlost: 1%/s</p></div>
+        </div>
+    </div>
+    <div id="posunuti_levelu">
+        <div>
+        <input id="levelcode" name="levelcode" type="text" value="Zadejte kód levelu">
+        <button class="closewindow" style="height: 20px; width: 50px;">OK</button>
         </div>
     </div>
     <div class="panel">
@@ -94,7 +100,7 @@
                     <div><h3><p class="text"><span id="coiny">0</span><span id="sklonovani_coiny"> coinů</span></p></h3></div>
                     <div><h3><p id="vyroba" class="text">0 coinů/s</p></h3></div>
                     <div><h3><p class="text">Postup: <span id="postup">0</span>%</p></h3></div>
-                    <div><h3 class="text">Kód: ONE</h3></div>
+                    <div><h3 class="text">Kód levelu: ONE</h3></div>
                 </div>
     </div>
 </div>

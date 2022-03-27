@@ -37,11 +37,12 @@ var cena_nejdelnik = 50000000;
 //nápověda
 //Hráč si chce zobrazit nápovědu
 function infozobraz(){
+    ok_penize();
     document.getElementById("info_velke").style.visibility = "visible";
 }
-function info1(){document.getElementById("info1").style.visibility = "visible";}
-function info2(){document.getElementById("info2").style.visibility = "visible";}
-function info3(){document.getElementById("info3").style.visibility = "visible";}
+function info1(){ok_penize(); document.getElementById("info1").style.visibility = "visible";}
+function info2(){ok_penize(); document.getElementById("info2").style.visibility = "visible";}
+function info3(){ok_penize(); document.getElementById("info3").style.visibility = "visible";}
 
 //Hráč chce rozbalit nebo skrýt obrázek budovy
 var skryto = true;
@@ -163,7 +164,7 @@ function dostat_prijem(){
 var pocet_prijem_1 = 0;
 function koupit_prijem_1(){
     if(coiny < cena_prijem_1){
-        document.getElementById("chybapenize").style.visibility = "visible";
+        ok_penize(); document.getElementById("chybapenize").style.visibility = "visible";
         return;
     }
     pocet_prijem_1 += 1;
@@ -174,7 +175,7 @@ function koupit_prijem_1(){
 var pocet_prijem_10 = 0;
 function koupit_prijem_10(){
     if(coiny < cena_prijem_10){
-        document.getElementById("chybapenize").style.visibility = "visible";
+        ok_penize(); document.getElementById("chybapenize").style.visibility = "visible";
         return;
     }
     pocet_prijem_10 += 1;
@@ -185,7 +186,7 @@ function koupit_prijem_10(){
 var pocet_prijem_100 = 0;
 function koupit_prijem_100(){
     if(coiny < cena_prijem_100){
-        document.getElementById("chybapenize").style.visibility = "visible";
+        ok_penize(); document.getElementById("chybapenize").style.visibility = "visible";
         
         return;
     }
@@ -197,7 +198,7 @@ function koupit_prijem_100(){
 var pocet_prijem_1000 = 0;
 function koupit_prijem_1000(){
     if(coiny < cena_prijem_1000){
-        document.getElementById("chybapenize").style.visibility = "visible";
+        ok_penize(); document.getElementById("chybapenize").style.visibility = "visible";
         
         return;
     }
@@ -209,7 +210,7 @@ function koupit_prijem_1000(){
 var pocet_prijem_10000 = 0;
 function koupit_prijem_10000(){
     if(coiny < cena_prijem_10000){
-        document.getElementById("chybapenize").style.visibility = "visible";
+        ok_penize(); document.getElementById("chybapenize").style.visibility = "visible";
         
         return;
     }
@@ -221,7 +222,7 @@ function koupit_prijem_10000(){
 var pocet_btc = 0;
 function koupit_btc(){
     if(coiny < cena_btc){
-        document.getElementById("chybapenize").style.visibility = "visible";
+        ok_penize(); document.getElementById("chybapenize").style.visibility = "visible";
         
         return;
     }
@@ -233,7 +234,7 @@ function koupit_btc(){
 //Prodat Bitcoin
 function prodat_btc(){
     if(pocet_btc < 1){
-        document.getElementById("chybapenize").style.visibility = "visible";
+        ok_penize(); document.getElementById("chybapenize").style.visibility = "visible";
         
         return;
     }
@@ -253,7 +254,7 @@ function btc_zmena(){
 var pocet_prijem_100k = 0;
 function koupit_prijem_100k(){
     if(coiny < cena_prijem_100k){
-        document.getElementById("chybapenize").style.visibility = "visible";
+        ok_penize(); document.getElementById("chybapenize").style.visibility = "visible";
         return;
     }
     pocet_prijem_100k += 1;
@@ -276,13 +277,12 @@ function ok_penize(){
 //Hráč si kupuje polystyren
 function postav_polystyren(){
     if (koupeno_polystyren){
-        document.getElementById("chyba_nedostupne").style.visibility = "visible";
+        ok_penize(); document.getElementById("chyba_nedostupne").style.visibility = "visible";
         
         return;
     }
     if (coiny < cena_polystyren){
-        document.getElementById("chybapenize").style.visibility = "visible";
-        
+        ok_penize(); document.getElementById("chybapenize").style.visibility = "visible";
         return;
     }
     coiny -= cena_polystyren;
@@ -294,12 +294,12 @@ function postav_polystyren(){
 //Hráč si kupuje obklady
 function postav_obklady(){
     if (koupeno_obklady){
-        document.getElementById("chyba_nedostupne").style.visibility = "visible";
+        ok_penize(); document.getElementById("chyba_nedostupne").style.visibility = "visible";
         
         return;
     }
     if (coiny < cena_obklady){
-        document.getElementById("chybapenize").style.visibility = "visible";
+        ok_penize(); document.getElementById("chybapenize").style.visibility = "visible";
         
         return;
     }
@@ -312,12 +312,12 @@ function postav_obklady(){
 //Hráč si kupuje okna
 function postav_okna(){
     if (koupeno_okna){
-        document.getElementById("chyba_nedostupne").style.visibility = "visible";
+        ok_penize(); document.getElementById("chyba_nedostupne").style.visibility = "visible";
         
         return;
     }
     if (coiny < cena_oken){
-        document.getElementById("chybapenize").style.visibility = "visible";
+        ok_penize(); document.getElementById("chybapenize").style.visibility = "visible";
         
         return;
     }
@@ -330,11 +330,11 @@ function postav_okna(){
 //Hráč si pronajímá techniku
 function postav_technika(){
     if (koupeno_technika){
-        document.getElementById("chyba_nedostupne").style.visibility = "visible";
+        ok_penize(); document.getElementById("chyba_nedostupne").style.visibility = "visible";
         return;
     }
     if (coiny < cena_technika){
-        document.getElementById("chybapenize").style.visibility = "visible";
+        ok_penize(); document.getElementById("chybapenize").style.visibility = "visible";
         return;
     }
     coiny -= cena_technika;
@@ -346,11 +346,11 @@ function postav_technika(){
 //Hráč si kupuje střechu
 function postav_strecha(){
     if (koupeno_strecha){
-        document.getElementById("chyba_nedostupne").style.visibility = "visible";
+        ok_penize(); document.getElementById("chyba_nedostupne").style.visibility = "visible";
         return;
     }
     if (coiny < cena_strechy){
-        document.getElementById("chybapenize").style.visibility = "visible";
+        ok_penize(); document.getElementById("chybapenize").style.visibility = "visible";
         return;
     }
     coiny -= cena_strechy;
@@ -362,11 +362,11 @@ function postav_strecha(){
 //Hráč si kupuje podlahu
 function postav_podlaha(){
     if (koupeno_podlaha){
-        document.getElementById("chyba_nedostupne").style.visibility = "visible";
+        ok_penize(); document.getElementById("chyba_nedostupne").style.visibility = "visible";
         return;
     }
     if (coiny < cena_podlaha){
-        document.getElementById("chybapenize").style.visibility = "visible";
+        ok_penize(); document.getElementById("chybapenize").style.visibility = "visible";
         return;
     }
     coiny -= cena_podlaha;
@@ -378,11 +378,11 @@ function postav_podlaha(){
 //Hráč si kupuje barvy a omítku
 function postav_barvy(){
     if (koupeno_barvy){
-        document.getElementById("chyba_nedostupne").style.visibility = "visible";
+        ok_penize(); document.getElementById("chyba_nedostupne").style.visibility = "visible";
         return;
     }
     if (coiny < cena_barvy){
-        document.getElementById("chybapenize").style.visibility = "visible";
+        ok_penize(); document.getElementById("chybapenize").style.visibility = "visible";
         return;
     }
     coiny -= cena_barvy;
@@ -404,11 +404,11 @@ var pocet_zakladdelnik = 0;
 var rychlost_zakladdelnik = 0.0001;
 function kup_zakladdelnik (){
     if (!muzezamestnat){
-        document.getElementById("chybadelnik").style.visibility = "visible";
+        ok_penize(); document.getElementById("chybadelnik").style.visibility = "visible";
         return;
     }
     if (vyroba < cena_zakladdelnik){
-        document.getElementById("chybapenize").style.visibility = "visible";
+        ok_penize(); document.getElementById("chybapenize").style.visibility = "visible";
         return;
     }
     pocet_zakladdelnik += 1;
@@ -418,11 +418,11 @@ var pocet_strednidelnik = 0;
 var rychlost_strednidelnik = 0.01;
 function kup_strednidelnik (){
     if (!muzezamestnat){
-        document.getElementById("chybadelnik").style.visibility = "visible";
+        ok_penize(); document.getElementById("chybadelnik").style.visibility = "visible";
         return;
     }
     if (vyroba < cena_strednidelnik){
-        document.getElementById("chybapenize").style.visibility = "visible";
+        ok_penize(); document.getElementById("chybapenize").style.visibility = "visible";
         return;
     }
     pocet_strednidelnik += 1;
@@ -439,11 +439,11 @@ function kup_nejdelnik (){
         return;
     }
     if (!muzezamestnat){
-        document.getElementById("chybadelnik").style.visibility = "visible";
+        ok_penize(); document.getElementById("chybadelnik").style.visibility = "visible";
         return;
     }
     if (vyroba < cena_nejdelnik){
-        document.getElementById("chybapenize").style.visibility = "visible";
+        ok_penize(); document.getElementById("chybapenize").style.visibility = "visible";
         return;
     }
     pocet_nejdelnik += 1;
@@ -464,6 +464,7 @@ function postup_pridat(){
 //Prohra
 function prohra(){
     if (coiny <= -10000){
+        ok_penize(); 
         document.getElementById("prohra").style.visibility = "visible";
         return;
     }
@@ -474,6 +475,7 @@ function ok_prohra(){
 //Výhra
 function vyhra(){
     if (postup >= 100){
+        ok_penize(); 
         document.getElementById("vyhra").style.visibility = "visible";
     }
 }

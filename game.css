@@ -173,7 +173,6 @@ div.buildthings:hover{
     animation-duration: 1s;
 }
 #pracovnici{
-    margin-bottom: 200px;
     text-align: center;
     align-items: center;
     display: block;
@@ -190,17 +189,30 @@ div.buildthings:hover{
     animation-name: vydelky;
     animation-duration: 1s;
 }
+#posunuti_levelu{
+    margin-bottom: 200px;
+    text-align: center;
+    align-items: center;
+    display: block;
+    text-align: center;
+    display: grid;
+}
+#levelcode{
+    height: 15px;
+    width: auto;
+    resize: none;
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: center;
+    align-content: center;
+    border: red solid 3px;
+}
 #nepracuje{
     visibility: hidden;
     animation: blik 1s infinite;
-    right: 0;
-    left: auto;
-    bottom: auto;
+    text-align: center;
+    z-index: 1;
     top: 0;
-    text-align: right;
-    margin: 50% 20px;
-    position: absolute;
-    z-index: -1;
 }
 @keyframes blik {
     0% {
