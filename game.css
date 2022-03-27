@@ -198,8 +198,8 @@ div.buildthings:hover{
     display: grid;
 }
 #levelcode{
-    height: 20px;
-    width: 50px;
+    height: 15px;
+    width: auto;
     resize: none;
     border-radius: 5px;
     overflow: hidden;
@@ -210,14 +210,9 @@ div.buildthings:hover{
 #nepracuje{
     visibility: hidden;
     animation: blik 1s infinite;
-    right: 0;
-    left: auto;
-    bottom: auto;
+    text-align: center;
+    z-index: 1;
     top: 0;
-    text-align: right;
-    margin: 50% 20px;
-    position: absolute;
-    z-index: -1;
 }
 @keyframes blik {
     0% {
