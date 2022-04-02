@@ -272,6 +272,23 @@ div.buildthings:hover{
     z-index: 3;
     opacity: 100%;
 }
+#info_start_2 {
+    visibility: hidden;
+    width: auto;
+    height: auto;
+    background-color: #000;
+    color: #fff;
+    right: 15%;
+    left: 15%;
+    bottom: auto;
+    top: 35%;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 8px;
+    position: fixed;
+    z-index: 3;
+    opacity: 100%;
+}
 .info {
     visibility: hidden;
     width: auto;
