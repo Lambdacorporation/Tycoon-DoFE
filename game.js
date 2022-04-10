@@ -268,6 +268,7 @@ function ok_penize(){
     document.getElementById("chybadelnik").style.visibility = "hidden";
     document.getElementById("info_start").style.visibility = "hidden";
     document.getElementById("info_start_2").style.visibility = "hidden";
+    document.getElementById("ludva_level2").style.visibility = "hidden";
 
     document.getElementById("info1").style.visibility = "hidden";
     document.getElementById("info2").style.visibility = "hidden";
@@ -433,6 +434,10 @@ var ludvik_nepracuje = false;
 var pocet_nejdelnik = 0;
 var rychlost_nejdelnik = 1;
 function kup_nejdelnik (){
+    if (level2){
+        document.getElementById("ludva_level2").style.visibility = "visible";
+        return;
+    }
     if (ludvik_nepracuje){
         ludvik_nepracuje = false;
         rychlost_nejdelnik = 1;
@@ -451,10 +456,12 @@ function kup_nejdelnik (){
 }
 var cas_lenost = Math.random()*200000;
 function lenost (){
-    ludvik_nepracuje = true;
-    rychlost_nejdelnik = 0;
-    document.getElementById("nepracuje").style.visibility = "visible";
-    cas_lenost = Math.random()*200000;
+    if (pocet_nejdelnik > 0){
+        ludvik_nepracuje = true;
+        rychlost_nejdelnik = 0;
+        document.getElementById("nepracuje").style.visibility = "visible";
+        cas_lenost = Math.random()*200000;
+    }
 }
 //Aktualizování postupu
 var postup = 0;
@@ -514,9 +521,11 @@ function ok_prohra(){
 //Výhra
 function vyhra(){
     if (postup >= 100){
-        ok_penize(); 
-        document.getElementById("vyhra").style.visibility = "visible";
-        druhylevel();
+        if (!level2){
+            ok_penize(); 
+            document.getElementById("vyhra").style.visibility = "visible";
+            druhylevel();
+        }
     }
 }
 //přeskakování levelu pomocí zadání kódu levelu
@@ -536,23 +545,24 @@ function druhylevel(){
 }
 
 window.setInterval(function() {
-    dane();
+    if ((vyroba < 5000)&&(coiny < 10000)){return;}
+    if (level2){
+        dane();
+        platy();
+    }
 }, 100000);
 
+var nasobplaty = 1;
+function platy(){
+    nasobplaty *= 10;
+    coiny -= nasobplaty*10000;
+}
 function dane(){
-    if (level2){
-        coiny -= (coiny/100)*36;
-        document.getElementById("coiny").innerHTML = coiny;
-    }
+    coiny -= (coiny/100)*36;
+    document.getElementById("coiny").innerHTML = coiny;
 }
 
 function clearlevel(){
-    coiny = 0;
-    document.getElementById("coiny").innerHTML = coiny;
-    postup = 0;
-    document.getElementById("postup").innerHTML = postup;
-    vyroba = 0;
-    document.getElementById("vyroba").innerHTML = vyroba;
     pocet_prijem_1 = 0;
     pocet_prijem_10 = 0;
     pocet_prijem_100 = 0;
@@ -564,4 +574,10 @@ function clearlevel(){
     pocet_zakladdelnik = 0;
     pocet_strednidelnik = 0;
     pocet_nejdelnik = 0;
+    vyroba = 0;
+    document.getElementById("vyroba").innerHTML = vyroba;
+    postup = 0;
+    document.getElementById("postup").innerHTML = postup;
+    coiny = 0;
+    document.getElementById("coiny").innerHTML = coiny;
 }

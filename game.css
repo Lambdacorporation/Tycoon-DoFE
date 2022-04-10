@@ -238,7 +238,7 @@ div.buildthings:hover{
 #btc_button:hover{
     background-color: red;
 }
-#chyba_nedostupne, #prohra, #chybapenize, #chybadelnik {
+#chyba_nedostupne, #prohra, #chybapenize, #chybadelnik, #ludva_level2 {
     visibility: hidden;
     width: auto;
     height: auto;
