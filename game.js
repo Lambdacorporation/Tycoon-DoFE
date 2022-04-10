@@ -267,6 +267,8 @@ function ok_penize(){
     document.getElementById("chybapenize").style.visibility = "hidden";
     document.getElementById("chybadelnik").style.visibility = "hidden";
     document.getElementById("info_start").style.visibility = "hidden";
+    document.getElementById("info_start_2").style.visibility = "hidden";
+    document.getElementById("ludva_level2").style.visibility = "hidden";
 
     document.getElementById("info1").style.visibility = "hidden";
     document.getElementById("info2").style.visibility = "hidden";
@@ -432,6 +434,10 @@ var ludvik_nepracuje = false;
 var pocet_nejdelnik = 0;
 var rychlost_nejdelnik = 1;
 function kup_nejdelnik (){
+    if (level2){
+        document.getElementById("ludva_level2").style.visibility = "visible";
+        return;
+    }
     if (ludvik_nepracuje){
         ludvik_nepracuje = false;
         rychlost_nejdelnik = 1;
@@ -450,34 +456,18 @@ function kup_nejdelnik (){
 }
 var cas_lenost = Math.random()*200000;
 function lenost (){
-    ludvik_nepracuje = true;
-    rychlost_nejdelnik = 0;
-    document.getElementById("nepracuje").style.visibility = "visible";
-    cas_lenost = Math.random()*200000;
+    if (pocet_nejdelnik > 0){
+        ludvik_nepracuje = true;
+        rychlost_nejdelnik = 0;
+        document.getElementById("nepracuje").style.visibility = "visible";
+        cas_lenost = Math.random()*200000;
+    }
 }
 //Aktualizování postupu
 var postup = 0;
 function postup_pridat(){
     postup += (pocet_zakladdelnik*rychlost_zakladdelnik) + (pocet_strednidelnik*rychlost_strednidelnik) + (pocet_nejdelnik*rychlost_nejdelnik);
     document.getElementById("postup").innerHTML = Math.round(postup*10000)/10000;
-}
-//Prohra
-function prohra(){
-    if (coiny <= -10000){
-        ok_penize(); 
-        document.getElementById("prohra").style.visibility = "visible";
-        return;
-    }
-}
-function ok_prohra(){
-    window.location.href="game.html";
-}
-//Výhra
-function vyhra(){
-    if (postup >= 100){
-        ok_penize(); 
-        document.getElementById("vyhra").style.visibility = "visible";
-    }
 }
 //aktualizování příjmu
 function aktualizovatprijem(){
@@ -501,13 +491,14 @@ window.setInterval(function() {
     aktualizovatprijem();
     zmena_okna();
 }, 0);
-//nastavuje interval 1 sekundu pro každý výdělek
+//nastavuje interval pro každý výdělek
+var intervalvydelek = 1000;
 window.setInterval(function() {
     prohra();
     vyhra();
     dostat_prijem();
     postup_pridat();
-}, 1000);
+}, intervalvydelek);
 //nastavuje interval pro zlenivění Ludvíčka
 window.setInterval(function() {
     lenost();
@@ -516,3 +507,77 @@ window.setInterval(function() {
 window.setInterval(function() {
     btc_zmena();
 }, 3000);
+//Prohra
+function prohra(){
+    if (coiny <= -10000){
+        ok_penize(); 
+        document.getElementById("prohra").style.visibility = "visible";
+        return;
+    }
+}
+function ok_prohra(){
+    window.location.href="game.html";
+}
+//Výhra
+function vyhra(){
+    if (postup >= 100){
+        if (!level2){
+            ok_penize(); 
+            document.getElementById("vyhra").style.visibility = "visible";
+            druhylevel();
+        }
+    }
+}
+//přeskakování levelu pomocí zadání kódu levelu
+function skiplevel(){
+    var kod = document.getElementById("levelcode").value;
+    if (kod=="ONE"){window.location.href="game.html";};
+    if (kod=="HRESK"){druhylevel();};
+}
+//změna na druhý level
+var level2 = false;
+function druhylevel(){
+    level2 = true;
+    intervalvydelek = 2000;
+    document.getElementById("textcode").innerHTML = "HRESK";
+    document.getElementById("info_start_2").visibility = "visible";
+    clearlevel();
+}
+
+window.setInterval(function() {
+    if ((vyroba < 5000)&&(coiny < 10000)){return;}
+    if (level2){
+        dane();
+        platy();
+    }
+}, 100000);
+
+var nasobplaty = 1;
+function platy(){
+    nasobplaty *= 10;
+    coiny -= nasobplaty*10000;
+}
+function dane(){
+    coiny -= (coiny/100)*36;
+    document.getElementById("coiny").innerHTML = coiny;
+}
+
+function clearlevel(){
+    pocet_prijem_1 = 0;
+    pocet_prijem_10 = 0;
+    pocet_prijem_100 = 0;
+    pocet_prijem_1000 = 0;
+    pocet_prijem_10000 = 0;
+    pocet_btc = 0;
+    document.getElementById("btc_pocet").innerHTML = pocet_btc;
+    pocet_prijem_100k = 0;
+    pocet_zakladdelnik = 0;
+    pocet_strednidelnik = 0;
+    pocet_nejdelnik = 0;
+    vyroba = 0;
+    document.getElementById("vyroba").innerHTML = vyroba;
+    postup = 0;
+    document.getElementById("postup").innerHTML = postup;
+    coiny = 0;
+    document.getElementById("coiny").innerHTML = coiny;
+}

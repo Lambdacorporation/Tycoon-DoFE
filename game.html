@@ -8,6 +8,7 @@
 </head>
 <body>
     <span id="info_start">V této hře máte za úkol rekonstruovat budovu Gymnázia Třebíč.<br> Klikejte na tlačítko <b class="name">Získej coin</b> pro výdělek.<br> Když budete mít dostatek financí, můžete si koupit automatické výdělky v sekci <b class="name">Vydělávací příležitosti</b> (nikdo se nechce předřít samozřejmě :)).<br> Více informací naleznete u každého tlačítka zvlášť po kliknutí na ikonu <b class="name">ⓘ</b>.<br><button id="pracuj" onclick="ok_penize()">OK</button></span>
+    <span id="info_start_2">Vítejte ve druhém levelu této hry.<br> Funkčnost a pravidla jsou zde stejná jako v předchozím levelu.<br> Navíc se v tomto levelu zavádí daně a platy učitelům.<br> Daně se budou odečítat každých 100 sekund a platy každých 200 sekund. <br> Daně odečtou 36% z Vašich peněz a platy Vás mohou zruinovat. <br> Myslete na to. Sežeňte rychle výdělky abyste nezkrachovali. <br> Opište si také kód levelu. Bude se hodit. Hodně štěstí. <br><br><button id="pracuj" onclick="ok_penize()">OK</button></span>
     <span id="vyhra">Gratulujeme, podařilo se Vám vyhrát první level této hry.<br> Tato hra je stále ve vývoji, a tak je hotový pouze tento level.<br> Děkujeme, že jste se stal Beta testerem této hry.<br> Po kliknutí na tlačítko se Váš postup resetuje!<br><button id="pracuj" onclick="ok_prohra()">OK</button></span>
     <span id="prohra">Litujeme, ale dostal jste školu do dluhů. Vaše hra tímto končí. Po kliknutí na tlačítko se Váš postup resetuje.<br><button id="pracuj" onclick="ok_prohra()">OK</button></span>
     <span id="chyba_nedostupne">Bohužel tato položka je již vyprodaná.<br><button id="pracuj" onclick="ok_penize()">OK</button></span>
@@ -19,6 +20,7 @@
     <span class="info" id="info2"><h2 class="name">Věci potřebné k rekonstrukci</h2><b class="name">Polystyren</b><br>Měkký, levný, dobrý pro zateplení budov.<br><b class="name">Obklady</b><br>Spíše pro vnitřní použití a designování.<br><b class="name">Okna</b><br>Základ každé budovy jsou nová okna a nové dveře. To ostatní je zbytečné :)<br><b class="name">Stavební technika</b><br>Základem rekonstrukce je dobré vybavení, dělníci se tolik nenadřou, a pak jim nebudeme muset tolik platit :)<br>
         <b class="name">Podlaha</b><br>Po čem bychom jinak chodily? Po hlíně? Žijeme v moderní době, potřebujeme podlahu.<br><b class="name">Střecha</b><br>Bez střechy bychom neměli střechu nad hlavou :) Střecha je hlavní část budovy, hned po zdech.<br><b class="name">Barvy a omítka</b><br>Spíše přežitek bez kterého bychom ale nedostali dotace :(<br><button id="pracuj" onclick="ok_penize()">OK</button></span>
     <span class="info" id="info3"><h2 class="name">Dělníci</h2><b class="name">Dělník Franta</b><br>Pomalý ale pracovitý. Pro započetí rekonstrukce dobrý, ale z dlouhodobého hlediska se nevyplatí.<br><b class="name">Dělník Ondra</b><br>Běžný pracovník co má rád lahváče a je trochu při těle.<br><b class="name">Dělník Ludva</b><br>Ludvíček je pořádný český pracant (není). Když přestane pracovat (objeví se vedle nadpisu Dělníci vykřičník), tak na něj stačí kliknout.<br><button id="pracuj" onclick="ok_penize()">OK</button></span>
+    <span id="ludva_level2">Ludvíček pracovat nemůže :D<br><button id="pracuj" onclick="ok_penize()">OK</button></span>
 <div id="all">
     <div class="header">
         <h1 class="name">Rekonstrukce GTR (pre-ALPHA)</h1>
@@ -91,7 +93,7 @@
     <div id="posunuti_levelu">
         <div>
         <input id="levelcode" name="levelcode" type="text" value="Zadejte kód levelu">
-        <button class="closewindow" style="height: 20px; width: 50px;">OK</button>
+        <button class="closewindow" onclick="skiplevel()" style="height: 20px; width: 50px;">OK</button>
         </div>
     </div>
     <div class="panel">
@@ -100,7 +102,7 @@
                     <div><h3><p class="text"><span id="coiny">0</span><span id="sklonovani_coiny"> coinů</span></p></h3></div>
                     <div><h3><p id="vyroba" class="text">0 coinů/s</p></h3></div>
                     <div><h3><p class="text">Postup: <span id="postup">0</span>%</p></h3></div>
-                    <div><h3 class="text">Kód levelu: ONE</h3></div>
+                    <div><h3 class="text">Kód levelu: <span id="textcode">ONE</span></h3></div>
                 </div>
     </div>
 </div>
