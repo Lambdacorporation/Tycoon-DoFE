@@ -533,12 +533,21 @@ function skiplevel(){
     var kod = document.getElementById("levelcode").value;
     if (kod=="ONE"){window.location.href="game.html";};
     if (kod=="HRESK"){druhylevel();};
+
+    //Cheaty, o tom bych se radši nebavil
+    if (kod=="HEHE1000JO"){coiny+=1000;}
+    if (kod=="UZPOTREBUJUMAKAT"){pocet_prijem_100k+=1;}
+}
+//smaže text po kliknutí na input se zadáním kódu levelu
+function smazattext(){
+    document.getElementById("levelcode").value = "";
 }
 //změna na druhý level
 var level2 = false;
 function druhylevel(){
     level2 = true;
-    intervalvydelek = 2000;
+    intervalvydelek += 1000;
+    document.getElementById("nejdelnik").style.opacity = "60%";
     document.getElementById("textcode").innerHTML = "HRESK";
     document.getElementById("info_start_2").visibility = "visible";
     clearlevel();
@@ -554,8 +563,8 @@ window.setInterval(function() {
 
 var nasobplaty = 1;
 function platy(){
-    nasobplaty *= 10;
     coiny -= nasobplaty*10000;
+    nasobplaty *= 10;
 }
 function dane(){
     coiny -= (coiny/100)*36;
