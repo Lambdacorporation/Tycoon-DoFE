@@ -7,4 +7,6 @@ Toto je hra, kterou tvořím k projektu DoFE (O letních prázdninách bude urč
 
 12.3.2022 Konečně je zde nápověda (možná se trochu bude ještě měnit)
 
+22.4.2022 Druhý level se začíná rýsovat!
+
 Odkaz na hru: https://8o6jwh.mimo.run/index.html
