@@ -214,6 +214,16 @@ div.buildthings:hover{
     z-index: 1;
     top: 0;
 }
+.ludvicek_level2{
+    list-style: none;
+    padding: 20px;
+    margin-bottom:5px;
+    background:white;
+    text-align: center;
+}
+#prijem_2mil{
+    visibility: hidden;
+}
 @keyframes blik {
     0% {
         color: red;

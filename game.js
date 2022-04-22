@@ -3,7 +3,7 @@ var vyroba = 0;
 var sklonovani_vyroba = "coinů"
 //definování cen a příjmů
 var prijem_1 = 1;
-var cena_prijem_1 = 10;
+var cena_prijem_1 = 100;
 var prijem_10 = 10;
 var cena_prijem_10 = 500;
 var prijem_100 = 100;
@@ -14,6 +14,8 @@ var prijem_10000 = 10000;
 var cena_prijem_10000 = 140000;
 var prijem_100k = 100000;
 var cena_prijem_100k = 1200000;
+var prijem_2mil = 2000000;
+var cena_prijem_2mil = 50000000;
 //definování cen materiálů
 var cena_polystyren = 30000000;
 var cena_obklady = 40000000;
@@ -261,6 +263,17 @@ function koupit_prijem_100k(){
     coiny -= cena_prijem_100k;
     document.getElementById("coiny").innerHTML = coiny;
 }
+//Trvalý výdělek 2mil coin/s
+var pocet_prijem_2mil = 0;
+function koupit_prijem_2mil(){
+    if(coiny < cena_prijem_2mil){
+        ok_penize(); document.getElementById("chybapenize").style.visibility = "visible";
+        return;
+    }
+    pocet_prijem_2mil += 1;
+    coiny -= cena_prijem_2mil;
+    document.getElementById("coiny").innerHTML = coiny;
+}
 //Odkliknutí OK na chybové hlášce
 function ok_penize(){
     document.getElementById("chyba_nedostupne").style.visibility = "hidden";
@@ -435,7 +448,7 @@ var pocet_nejdelnik = 0;
 var rychlost_nejdelnik = 1;
 function kup_nejdelnik (){
     if (level2){
-        document.getElementById("ludva_level2").style.visibility = "visible";
+        ok_penize(); document.getElementById("ludva_level2").style.visibility = "visible";
         return;
     }
     if (ludvik_nepracuje){
@@ -471,7 +484,7 @@ function postup_pridat(){
 }
 //aktualizování příjmu
 function aktualizovatprijem(){
-    prijmy = (prijem_1*pocet_prijem_1)+(prijem_10*pocet_prijem_10)+(prijem_100*pocet_prijem_100)+(prijem_1000*pocet_prijem_1000)+(prijem_10000*pocet_prijem_10000)+(prijem_100k*pocet_prijem_100k);
+    prijmy = (prijem_1*pocet_prijem_1)+(prijem_10*pocet_prijem_10)+(prijem_100*pocet_prijem_100)+(prijem_1000*pocet_prijem_1000)+(prijem_10000*pocet_prijem_10000)+(prijem_100k*pocet_prijem_100k)+(prijem_2mil*pocet_prijem_2mil);
     odecty = (cena_zakladdelnik*pocet_zakladdelnik)+(cena_strednidelnik*pocet_strednidelnik)+(pocet_nejdelnik*cena_nejdelnik);
     vyroba = prijmy - odecty;
     if (vyroba == 1) sklonovani_vyroba = "coin";
@@ -548,8 +561,10 @@ function druhylevel(){
     level2 = true;
     intervalvydelek += 1000;
     document.getElementById("nejdelnik").style.opacity = "60%";
+    document.getElementById("nejdelnik").className = "ludvicek_level2";
+    document.getElementById("ludvapopis2").innerHTML = "Ludvíček je pořádný český pracant (NEPRACUJE)."
     document.getElementById("textcode").innerHTML = "HRESK";
-    document.getElementById("info_start_2").visibility = "visible";
+    document.getElementById("prijem_2mil").style.visibility = "visible";
     clearlevel();
 }
 
@@ -580,6 +595,7 @@ function clearlevel(){
     pocet_btc = 0;
     document.getElementById("btc_pocet").innerHTML = pocet_btc;
     pocet_prijem_100k = 0;
+    pocet_prijem_2mil = 0;
     pocet_zakladdelnik = 0;
     pocet_strednidelnik = 0;
     pocet_nejdelnik = 0;
@@ -589,4 +605,5 @@ function clearlevel(){
     document.getElementById("postup").innerHTML = postup;
     coiny = 0;
     document.getElementById("coiny").innerHTML = coiny;
+    document.getElementById("info_start_2").visibility = "visible";
 }
