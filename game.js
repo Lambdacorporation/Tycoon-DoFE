@@ -563,9 +563,10 @@ function druhylevel(){
     document.getElementById("nejdelnik").style.opacity = "60%";
     document.getElementById("nejdelnik").className = "ludvicek_level2";
     document.getElementById("ludvapopis2").innerHTML = "Ludvíček je pořádný český pracant (NEPRACUJE)."
+    document.getElementById("budova_obraz").src = "https://eu.zonerama.com/photos/319973818_1021x766_16.jpg";
     document.getElementById("textcode").innerHTML = "HRESK";
     document.getElementById("prijem_2mil").style.visibility = "visible";
-    clearlevel();
+    clearlevel();//Tato funkce má na starosti smazání dat z prvního levelu
 }
 
 window.setInterval(function() {

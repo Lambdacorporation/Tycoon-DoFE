@@ -95,6 +95,31 @@ body{
     background-color: red;
     box-shadow: none;
 }
+#animace_coin{
+    border-radius: 100px;
+    width: auto;
+    height: auto;
+    
+    position: relative;
+    
+}
+#animace_coin img{
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    animation: pracuje 1s infinite ease-in-out;
+}
+@keyframes pracuje {
+    0% {
+        transform: translateY(0px);
+        opacity: 100%;
+    }
+    100% {
+        transform: translateY(-100px);
+        opacity: 0%;
+    }
+    
+}
 .building_title{
     color: red;
     text-align: center;
