@@ -154,6 +154,12 @@ var sklonovani = " coinů";
 function pracuj(){
     coiny += prijem;
     document.getElementById("coiny").innerHTML = coiny;
+    nahodny_coin = Math.floor((Math.random() * 4)+1);
+    document.getElementById("animace_coin_" + nahodny_coin).style.display = "unset";
+    const dobadoschovani = setTimeout(schov_obraz_animace,100);
+    function schov_obraz_animace(){
+        document.getElementById("animace_coin_" + nahodny_coin).style.display = "none";
+    }
 }
 //Dostávání trvalého výdělku
 var prijmy = 0;
@@ -563,9 +569,10 @@ function druhylevel(){
     document.getElementById("nejdelnik").style.opacity = "60%";
     document.getElementById("nejdelnik").className = "ludvicek_level2";
     document.getElementById("ludvapopis2").innerHTML = "Ludvíček je pořádný český pracant (NEPRACUJE)."
+    document.getElementById("budova_obraz").src = "https://eu.zonerama.com/photos/319973818_1021x766_16.jpg";
     document.getElementById("textcode").innerHTML = "HRESK";
     document.getElementById("prijem_2mil").style.visibility = "visible";
-    clearlevel();
+    clearlevel();//Tato funkce má na starosti smazání dat z prvního levelu
 }
 
 window.setInterval(function() {

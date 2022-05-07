@@ -47,28 +47,32 @@ body{
     box-shadow: none;
 }
 .header{
-    text-align: left;
     border-radius: 0 0 10px 10px;
-    margin: 0 0 20px 0;
+    margin: 0;
     min-height: 70px;
-    width: 100%;
+    min-width: 100%;
     overflow: hidden;
-    padding-top: 10px;
+    padding: 0px;
     background-color: darkred;
     border-bottom: red 3px solid;
+    top: 0%;
+    left: 0%;
+    right: 0%;
 }
 .panel{
     border-radius: 10px 10px 0 0;
     min-height: 70px;
-    width: 99%;
+    min-width: 100%;
     position: fixed;
-    bottom: 0;
+    bottom: 0%;
     overflow: hidden;
     padding-bottom: 10px;
     background-color: darkred;
     border-top: red 3px solid;
     display: inline-block;
     z-index: 2;
+    left: 0%;
+    right: 0%;
 }
 .panel_info {
     text-align: center;
@@ -90,6 +94,32 @@ body{
 #pracuj:hover{
     background-color: red;
     box-shadow: none;
+}
+#animace_coin {
+    margin-left: 48%;
+}
+#animace_coin_1, #animace_coin_2, #animace_coin_3, #animace_coin_4{
+    border-radius: 100px;
+    width: auto;
+    height: auto;
+    display: none;
+    position: relative;
+}
+#animace_coin_1 img, #animace_coin_2 img, #animace_coin_3 img, #animace_coin_4 img{
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    animation: pracuje 0.1s 1 ease-in;
+}
+@keyframes pracuje {
+    0% {
+        transform: translateY(0px);
+        opacity: 100%;
+    }
+    100% {
+        transform: translateY(-100px);
+        opacity: 0%;
+    }
 }
 .building_title{
     color: red;
