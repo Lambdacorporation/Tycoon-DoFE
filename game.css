@@ -95,19 +95,21 @@ body{
     background-color: red;
     box-shadow: none;
 }
-#animace_coin{
+#animace_coin {
+    margin-left: 48%;
+}
+#animace_coin_1, #animace_coin_2, #animace_coin_3, #animace_coin_4{
     border-radius: 100px;
     width: auto;
     height: auto;
-    
+    display: none;
     position: relative;
-    
 }
-#animace_coin img{
+#animace_coin_1 img, #animace_coin_2 img, #animace_coin_3 img, #animace_coin_4 img{
     border-radius: 100%;
     width: 20px;
     height: 20px;
-    animation: pracuje 1s infinite ease-in-out;
+    animation: pracuje 0.1s 1 ease-in;
 }
 @keyframes pracuje {
     0% {
@@ -118,7 +120,6 @@ body{
         transform: translateY(-100px);
         opacity: 0%;
     }
-    
 }
 .building_title{
     color: red;

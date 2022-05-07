@@ -154,6 +154,12 @@ var sklonovani = " coinů";
 function pracuj(){
     coiny += prijem;
     document.getElementById("coiny").innerHTML = coiny;
+    nahodny_coin = Math.floor((Math.random() * 4)+1);
+    document.getElementById("animace_coin_" + nahodny_coin).style.display = "unset";
+    const dobadoschovani = setTimeout(schov_obraz_animace,100);
+    function schov_obraz_animace(){
+        document.getElementById("animace_coin_" + nahodny_coin).style.display = "none";
+    }
 }
 //Dostávání trvalého výdělku
 var prijmy = 0;
