@@ -8,7 +8,7 @@
 </head>
 <body>
     <span id="info_start">V této hře máte za úkol rekonstruovat budovu Gymnázia Třebíč.<br> Klikejte na tlačítko <b class="name">Získej coin</b> pro výdělek.<br> Když budete mít dostatek financí, můžete si koupit automatické výdělky v sekci <b class="name">Vydělávací příležitosti</b> (nikdo se nechce předřít samozřejmě :)).<br> Více informací naleznete u každého tlačítka zvlášť po kliknutí na ikonu <b class="name">ⓘ</b>.<br><button id="pracuj" onclick="ok_penize()">OK</button></span>
-    <span id="info_start_2">Vítejte ve druhém levelu této hry.<br> Funkčnost a pravidla jsou zde stejná jako v předchozím levelu.<br> Navíc se v tomto levelu zavádí daně a platy učitelům.<br> Daně se budou odečítat každých 100 sekund a platy každých 200 sekund. <br> Daně odečtou 36% z Vašich peněz a platy Vás mohou zruinovat. <br> Myslete na to. Sežeňte rychle výdělky abyste nezkrachovali. <br> Opište si také kód levelu. Bude se hodit. Hodně štěstí. <br><br><button id="pracuj" onclick="ok_penize()">OK</button></span>
+    <span id="info_start_2">Vítejte ve druhém levelu této hry.<br> Funkčnost a pravidla jsou zde stejná jako v předchozím levelu.<br> Navíc se v tomto levelu zavádí daně a platy učitelům (poznáte i inflaci).<br> Daně se budou odečítat každých 100 sekund a platy každých 200 sekund. <br> Daně odečtou 36% z Vašich peněz a platy Vás mohou zruinovat. <br> Myslete na to. Sežeňte rychle výdělky abyste nezkrachovali. <br> Opište si také kód levelu. Bude se hodit. Hodně štěstí. <br><br><button id="pracuj" onclick="ok_penize()">OK</button></span>
     <span id="vyhra">Gratulujeme, podařilo se Vám vyhrát první level této hry.<br> Tato hra je stále ve vývoji, a tak je hotový pouze tento level.<br> Děkujeme, že jste se stal Beta testerem této hry.<br> Po kliknutí na tlačítko se Váš postup resetuje!<br><button id="pracuj" onclick="ok_prohra()">OK</button></span>
     <span id="prohra">Litujeme, ale dostal jste školu do dluhů. Vaše hra tímto končí. Po kliknutí na tlačítko se Váš postup resetuje.<br><button id="pracuj" onclick="ok_prohra()">OK</button></span>
     <span id="chyba_nedostupne">Bohužel tato položka je již vyprodaná.<br><button id="pracuj" onclick="ok_penize()">OK</button></span>
@@ -92,8 +92,8 @@
             <div><h2 class="name" id="napoveda" onclick="info3()">ⓘ</h2></div>
         </div>
         <div id="pracovnici1">
-            <div class="buildthings" id="zakladdelnik" onclick="kup_zakladdelnik()"><h3 class="building_title">Dělník Franta</h3><img src="https://eu.zonerama.com/photos/309467301_228x228_16.jpg" style="width: 90%; height: auto;"><br><p>Cena: 50k coinů/s</p><p>Rychlost: 0.0001%/s</p></div>
-            <div class="buildthings" id="strednidelnik" onclick="kup_strednidelnik()"><h3 class="building_title">Dělník Ondra</h3><img src="https://eu.zonerama.com/photos/309480410_228x228_16.jpg" style="width: 90%; height: auto;"><br><p>Cena: 1mil coinů/s</p><p>Rychlost: 0.01%/s</p></div>
+            <div class="buildthings" id="zakladdelnik" onclick="kup_zakladdelnik()"><h3 class="building_title">Dělník Franta</h3><img src="https://eu.zonerama.com/photos/309467301_228x228_16.jpg" style="width: 90%; height: auto;"><br><p id="cenafranta">Cena: 50k coinů/s</p><p>Rychlost: 0.0001%/s</p></div>
+            <div class="buildthings" id="strednidelnik" onclick="kup_strednidelnik()"><h3 class="building_title">Dělník Ondra</h3><img src="https://eu.zonerama.com/photos/309480410_228x228_16.jpg" style="width: 90%; height: auto;"><br><p id="cenaondra">Cena: 1mil coinů/s</p><p>Rychlost: 0.01%/s</p></div>
             <div class="buildthings" id="nejdelnik" onclick="kup_nejdelnik()"><h3 class="building_title">Dělník Ludva</h3><img src="https://eu.zonerama.com/photos/309717738_228x228_16.jpg" style="width: 90%; height: auto;"><br><p>Cena: 50mil coinů/s</p><p>Rychlost: 1%/s</p></div>
         </div>
     </div>

@@ -565,6 +565,7 @@ function smazattext(){
 var level2 = false;
 function druhylevel(){
     level2 = true;
+    document.getElementById("info_start_2").visibility = "visible";
     intervalvydelek += 1000;
     document.getElementById("nejdelnik").style.opacity = "60%";
     document.getElementById("nejdelnik").className = "ludvicek_level2";
@@ -612,5 +613,29 @@ function clearlevel(){
     document.getElementById("postup").innerHTML = postup;
     coiny = 0;
     document.getElementById("coiny").innerHTML = coiny;
-    document.getElementById("info_start_2").visibility = "visible";
+    premenacen();
+}
+
+function premenacen(){//mění ceny (inflace) na začátku levelu 2
+    document.getElementById("cenapolystyren").innerHTML = "Cena: 60mil coinů";
+    document.getElementById("cenaobklady").innerHTML = "Cena: 80mil coinů";
+    document.getElementById("cenaokna").innerHTML = "Cena: 170mil coinů";
+    document.getElementById("cenatechnika").innerHTML = "Cena: 200mil coinů";
+    document.getElementById("cenapodlaha").innerHTML = "Cena: 220mil coinů";
+    document.getElementById("cenastrecha").innerHTML = "Cena: 321mil coinů";
+    document.getElementById("cenabarvy").innerHTML = "Cena: 460mil coinů";
+
+    cena_polystyren = 60000000;
+    cena_obklady = 80000000;
+    cena_oken = 170000000;
+    cena_technika = 200000000;
+    cena_strechy = 321000000;
+    cena_podlaha = 220000000;
+    cena_barvy = 560000000;
+
+    document.getElementById("cenafranta").innerHTML = "Cena: 100k coinů/s";
+    document.getElementById("cenaondra").innerHTML = "Cena: 2mil coinů/s";
+
+    cena_zakladdelnik = 100000;
+    cena_strednidelnik = 2000000;
 }
