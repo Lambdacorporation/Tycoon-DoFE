@@ -288,6 +288,8 @@ function ok_penize(){
     document.getElementById("info_start").style.visibility = "hidden";
     document.getElementById("info_start_2").style.visibility = "hidden";
     document.getElementById("ludva_level2").style.visibility = "hidden";
+    document.getElementById("propad_crypto").style.visibility = "hidden";
+    document.getElementById("epic_cheat").style.visibility = "hidden";
 
     document.getElementById("info1").style.visibility = "hidden";
     document.getElementById("info2").style.visibility = "hidden";
@@ -545,6 +547,10 @@ function vyhra(){
             document.getElementById("vyhra").style.visibility = "visible";
             druhylevel();
         }
+        if (level2){
+            ok_penize(); 
+            document.getElementById("vyhra").style.visibility = "visible";
+        }
     }
 }
 //přeskakování levelu pomocí zadání kódu levelu
@@ -556,6 +562,11 @@ function skiplevel(){
     //Cheaty, o tom bych se radši nebavil
     if (kod=="HEHE1000JO"){coiny+=1000;}
     if (kod=="UZPOTREBUJUMAKAT"){pocet_prijem_100k+=1;}
+    if (kod=="CJCWC"){
+        ok_penize();
+        document.getElementById("epic_cheat").style.visibility = "visible";
+        pocet_prijem_2mil += 1;
+    }
 }
 //smaže text po kliknutí na input se zadáním kódu levelu
 function smazattext(){
@@ -571,12 +582,17 @@ function druhylevel(){
     document.getElementById("nejdelnik").className = "ludvicek_level2";
     document.getElementById("ludvapopis2").innerHTML = "Ludvíček je pořádný český pracant (NEPRACUJE)."
     document.getElementById("budova_obraz").src = "https://eu.zonerama.com/photos/319973818_1021x766_16.jpg";
+    document.getElementById("crypto_title").innerHTML = "Ethereum";
+    document.getElementById("info_header_crypto").innerHTML = "Ethereum";
+    document.getElementById("crypto_p").innerHTML = "ETH";
+    document.getElementById("crypto_img").src = "https://eu.zonerama.com/photos/355531981_686x686_16.jpg";
     document.getElementById("textcode").innerHTML = "HRESK";
     document.getElementById("prijem_2mil").style.visibility = "visible";
     clearlevel();//Tato funkce má na starosti smazání dat z prvního levelu
 }
 
 window.setInterval(function() {
+    if (level2 = false){return;}
     if ((vyroba < 5000)&&(coiny < 10000)){return;}
     if (level2){
         dane();
@@ -584,15 +600,26 @@ window.setInterval(function() {
     }
 }, 100000);
 
-var nasobplaty = 1;
+var nasobplaty = (coiny/10)*3;
 function platy(){
-    coiny -= nasobplaty*10000;
-    nasobplaty *= 10;
+    coiny -= nasobplaty;
 }
 function dane(){
     coiny -= (coiny/100)*36;
     document.getElementById("coiny").innerHTML = coiny;
 }
+var cas_propad = 100000;
+function propadburzy(){
+    pocet_btc = 0;
+    document.getElementById("btc_pocet").innerHTML = pocet_btc;
+    ok_penize(); document.getElementById("propad_crypto").style.visibility = "visible";
+    cas_propad = Math.random()*100000;
+}
+window.setInterval(function(){
+    if (level2){
+        propadburzy();
+    }
+}, cas_propad)
 
 function clearlevel(){
     pocet_prijem_1 = 0;

@@ -279,7 +279,7 @@ div.buildthings:hover{
 #btc_button:hover{
     background-color: red;
 }
-#chyba_nedostupne, #prohra, #chybapenize, #chybadelnik, #ludva_level2 {
+#chyba_nedostupne, #prohra, #chybapenize, #chybadelnik, #ludva_level2, #propad_crypto {
     visibility: hidden;
     width: auto;
     height: auto;
@@ -352,7 +352,7 @@ div.buildthings:hover{
 #napoveda {
     cursor: pointer;
 }
-#vyhra {
+#vyhra, #vyhra2, #epic_cheat {
     visibility: hidden;
     width: auto;
     height: auto;
