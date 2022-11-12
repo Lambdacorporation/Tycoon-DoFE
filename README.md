@@ -9,4 +9,6 @@ Toto je hra, kterou tvořím k projektu DoFE (O letních prázdninách bude urč
 
 22.4.2022 Druhý level se začíná rýsovat!
 
+12.11.2022 Uff, docela dlouhá přestávka to byla, no co už, tak se jde makat zase.
+
 Odkaz na hru: https://8o6jwh.mimo.run/index.html
