@@ -544,12 +544,12 @@ function vyhra(){
     if (postup >= 100){
         if (!level2){
             ok_penize(); 
-            document.getElementById("vyhra").style.visibility = "visible";
+            document.getElementById("info_start_2").style.visibility = "visible";
             druhylevel();
         }
         if (level2){
             ok_penize(); 
-            document.getElementById("vyhra").style.visibility = "visible";
+            document.getElementById("vyhra2").style.visibility = "visible";
         }
     }
 }
@@ -575,6 +575,7 @@ function smazattext(){
 //změna na druhý level
 var level2 = false;
 function druhylevel(){
+    postup = 0;
     level2 = true;
     document.getElementById("info_start_2").visibility = "visible";
     intervalvydelek += 1000;
