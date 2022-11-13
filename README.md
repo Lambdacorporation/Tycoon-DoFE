@@ -11,4 +11,4 @@ Toto je hra, kterou tvořím k projektu DoFE (O letních prázdninách bude urč
 
 12.11.2022 Uff, docela dlouhá přestávka to byla, no co už, tak se jde makat zase.
 
-Odkaz na hru: https://8o6jwh.mimo.run/index.html
+Odkaz na hru: https://lambdacorporation.github.io/
