@@ -495,17 +495,33 @@ function aktualizovatprijem(){
     prijmy = (prijem_1*pocet_prijem_1)+(prijem_10*pocet_prijem_10)+(prijem_100*pocet_prijem_100)+(prijem_1000*pocet_prijem_1000)+(prijem_10000*pocet_prijem_10000)+(prijem_100k*pocet_prijem_100k)+(prijem_2mil*pocet_prijem_2mil);
     odecty = (cena_zakladdelnik*pocet_zakladdelnik)+(cena_strednidelnik*pocet_strednidelnik)+(pocet_nejdelnik*cena_nejdelnik);
     vyroba = prijmy - odecty;
+    //Skloňování a zkrácení zápisu výdělků za sekundu
     if (vyroba == 1) sklonovani_vyroba = "coin";
     if ((vyroba >= 2)&&(vyroba < 5)) sklonovani_vyroba = "coiny";
-    if (vyroba >= 5) sklonovani_vyroba = "coinů";
-    document.getElementById("vyroba").innerHTML = vyroba + " " + sklonovani_vyroba + "/s";
+    if ((vyroba >= 5)&&(vyroba == 0)) sklonovani_vyroba = "coinů";
+    if (vyroba >= 1000){
+        document.getElementById("vyroba").innerHTML = Math.round(vyroba/100)/10 + "k" + " " + sklonovani_vyroba + "/s";
+    }
+    if (vyroba >= 1000000){
+        document.getElementById("vyroba").innerHTML = Math.round(vyroba/100000)/10 + "mil" + " " + sklonovani_vyroba + "/s";
+    }
+    if (vyroba >= 1000000000){
+        document.getElementById("vyroba").innerHTML = Math.round(vyroba/100000000)/10 + "mld" + " " + sklonovani_vyroba + "/s";
+    }
+    //Skloňování a zkrácení zápisu počtu coinů
     if (coiny == 1) sklonovani = " coin";
     if ((coiny >= 2)&&(coiny < 5)) sklonovani = " coiny";
     if (coiny >= 5) sklonovani = " coinů";
     document.getElementById("sklonovani_coiny").innerHTML = sklonovani;
-    if (coiny >= 1000) document.getElementById("coiny").innerHTML = Math.round(coiny/100)/10 + "k";
-    if (coiny >= 1000000) document.getElementById("coiny").innerHTML = Math.round(coiny/100000)/10 + "mil";
-    if (coiny >= 1000000000) document.getElementById("coiny").innerHTML = Math.round(coiny/100000000)/10 + "mld";
+    if (coiny >= 1000){
+        document.getElementById("coiny").innerHTML = Math.round(coiny/100)/10 + "k";
+    }
+    if (coiny >= 1000000) {
+        document.getElementById("coiny").innerHTML = Math.round(coiny/100000)/10 + "mil";
+    }
+    if (coiny >= 1000000000){ 
+        document.getElementById("coiny").innerHTML = Math.round(coiny/100000000)/10 + "mld";
+    }
 }
 //aktualizace okna
 window.setInterval(function() {
@@ -565,7 +581,7 @@ function skiplevel(){
     if (kod=="CJCWC"){
         ok_penize();
         document.getElementById("epic_cheat").style.visibility = "visible";
-        pocet_prijem_2mil += 1;
+        pocet_prijem_2mil += 100;
     }
 }
 //smaže text po kliknutí na input se zadáním kódu levelu
@@ -577,6 +593,7 @@ var level2 = false;
 function druhylevel(){
     postup = 0;
     level2 = true;
+    ok_penize();
     document.getElementById("info_start_2").visibility = "visible";
     intervalvydelek += 1000;
     document.getElementById("nejdelnik").style.opacity = "60%";
@@ -636,11 +653,19 @@ function clearlevel(){
     pocet_strednidelnik = 0;
     pocet_nejdelnik = 0;
     vyroba = 0;
-    document.getElementById("vyroba").innerHTML = vyroba;
+    document.getElementById("vyroba").innerHTML = vyroba + " " + sklonovani_vyroba + "/s";
     postup = 0;
     document.getElementById("postup").innerHTML = postup;
     coiny = 0;
     document.getElementById("coiny").innerHTML = coiny;
+    koupeno_barvy = false;
+    koupeno_obklady = false;
+    koupeno_okna = false;
+    koupeno_podlaha = false;
+    koupeno_polystyren = false;
+    koupeno_strecha = false;
+    koupeno_technika = false;
+    muzezamestnat = false;
     premenacen();
 }
 
