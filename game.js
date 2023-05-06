@@ -1,3 +1,4 @@
+var level2 = false;
 //vypocet coinů/s
 var vyroba = 0;
 var sklonovani_vyroba = "coinů"
@@ -286,7 +287,7 @@ function ok_penize(){
     document.getElementById("chybapenize").style.visibility = "hidden";
     document.getElementById("chybadelnik").style.visibility = "hidden";
     document.getElementById("info_start").style.visibility = "hidden";
-    document.getElementById("info_start_2").style.visibility = "hidden";
+    document.getElementById("info_start_two").style.visibility = "hidden";
     document.getElementById("ludva_level2").style.visibility = "hidden";
     document.getElementById("propad_crypto").style.visibility = "hidden";
     document.getElementById("epic_cheat").style.visibility = "hidden";
@@ -456,7 +457,8 @@ var pocet_nejdelnik = 0;
 var rychlost_nejdelnik = 1;
 function kup_nejdelnik (){
     if (level2){
-        ok_penize(); document.getElementById("ludva_level2").style.visibility = "visible";
+        ok_penize(); 
+        document.getElementById("ludva_level2").style.visibility = "visible";
         return;
     }
     if (ludvik_nepracuje){
@@ -559,8 +561,8 @@ function ok_prohra(){
 function vyhra(){
     if (postup >= 100){
         if (!level2){
-            ok_penize(); 
-            document.getElementById("info_start_2").style.visibility = "visible";
+            //ok_penize(); 
+            //document.getElementById("info_start_two").style.visibility = "visible";
             druhylevel();
         }
         if (level2){
@@ -589,13 +591,16 @@ function smazattext(){
     document.getElementById("levelcode").value = "";
 }
 //změna na druhý level
-var level2 = false;
+
 function druhylevel(){
     postup = 0;
     level2 = true;
     ok_penize();
-    document.getElementById("info_start_2").visibility = "visible";
+    document.getElementById("info_start_two").visibility = "visible";
     intervalvydelek += 1000;
+    //Testovací prvek
+    document.getElementById("levelcode").value = "Funguje to!";
+
     document.getElementById("nejdelnik").style.opacity = "60%";
     document.getElementById("nejdelnik").className = "ludvicek_level2";
     document.getElementById("ludvapopis2").innerHTML = "Ludvíček je pořádný český pracant (NEPRACUJE)."
@@ -609,6 +614,7 @@ function druhylevel(){
     clearlevel();//Tato funkce má na starosti smazání dat z prvního levelu
 }
 
+//Automatické ubírání určitého procenta coinů jako výplatu pro zaměstnance a daně
 window.setInterval(function() {
     if (level2 = false){return;}
     if ((vyroba < 5000)&&(coiny < 10000)){return;}
@@ -626,6 +632,8 @@ function dane(){
     coiny -= (coiny/100)*36;
     document.getElementById("coiny").innerHTML = coiny;
 }
+
+//Definuje kdy a jak má nastat propad burzy
 var cas_propad = 100000;
 function propadburzy(){
     pocet_btc = 0;
