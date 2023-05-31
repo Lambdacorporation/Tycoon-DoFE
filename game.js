@@ -296,6 +296,10 @@ function ok_penize(){
     document.getElementById("info2").style.visibility = "hidden";
     document.getElementById("info3").style.visibility = "hidden";
     document.getElementById("all").style.filter = "";
+
+    document.getElementById("vyhra").style.visibility = "hidden";
+    document.getElementById("vyhra2").style.visibility = "hidden";
+    document.getElementById("prohra").style.visibility = "hidden";
 }
 //Stavba
 //Hráč si kupuje polystyren
@@ -500,7 +504,7 @@ function aktualizovatprijem(){
     //Skloňování a zkrácení zápisu výdělků za sekundu
     if (vyroba == 1) sklonovani_vyroba = "coin";
     if ((vyroba >= 2)&&(vyroba < 5)) sklonovani_vyroba = "coiny";
-    if ((vyroba >= 5)&&(vyroba == 0)) sklonovani_vyroba = "coinů";
+    if ((vyroba >= 5)||(vyroba == 0)) sklonovani_vyroba = "coinů";
     if (vyroba >= 1000){
         document.getElementById("vyroba").innerHTML = Math.round(vyroba/100)/10 + "k" + " " + sklonovani_vyroba + "/s";
     }
@@ -510,10 +514,11 @@ function aktualizovatprijem(){
     if (vyroba >= 1000000000){
         document.getElementById("vyroba").innerHTML = Math.round(vyroba/100000000)/10 + "mld" + " " + sklonovani_vyroba + "/s";
     }
+    document.getElementById("vyroba").innerHTML = vyroba + " " + sklonovani_vyroba + "/s";
     //Skloňování a zkrácení zápisu počtu coinů
     if (coiny == 1) sklonovani = " coin";
     if ((coiny >= 2)&&(coiny < 5)) sklonovani = " coiny";
-    if (coiny >= 5) sklonovani = " coinů";
+    if ((coiny >= 5)||(coiny==0)) sklonovani = " coinů";
     document.getElementById("sklonovani_coiny").innerHTML = sklonovani;
     if (coiny >= 1000){
         document.getElementById("coiny").innerHTML = Math.round(coiny/100)/10 + "k";
@@ -529,14 +534,16 @@ function aktualizovatprijem(){
 window.setInterval(function() {
     aktualizovatprijem();
     zmena_okna();
-}, 0);
+}, 1);
 //nastavuje interval pro každý výdělek
 var intervalvydelek = 1000;
 window.setInterval(function() {
     prohra();
     vyhra();
-    dostat_prijem();
     postup_pridat();
+}, 1000);
+window.setInterval(function() {
+    dostat_prijem();
 }, intervalvydelek);
 //nastavuje interval pro zlenivění Ludvíčka
 window.setInterval(function() {
@@ -564,10 +571,12 @@ function vyhra(){
             //ok_penize(); 
             //document.getElementById("info_start_two").style.visibility = "visible";
             druhylevel();
+            return;
         }
         if (level2){
             ok_penize(); 
             document.getElementById("vyhra2").style.visibility = "visible";
+            return;
         }
     }
 }
@@ -594,6 +603,7 @@ function smazattext(){
 
 function druhylevel(){
     postup = 0;
+    ok_penize();
     level2 = true;
     ok_penize();
     document.getElementById("info_start_two").visibility = "visible";
@@ -617,7 +627,7 @@ function druhylevel(){
 //Automatické ubírání určitého procenta coinů jako výplatu pro zaměstnance a daně
 window.setInterval(function() {
     if (level2 = false){return;}
-    if ((vyroba < 5000)&&(coiny < 10000)){return;}
+    if ((vyroba < 5000)||(coiny < 10000)){return;}
     if (level2){
         dane();
         platy();
