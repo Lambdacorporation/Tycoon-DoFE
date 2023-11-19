@@ -1,0 +1,384 @@
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    margin: 0%;
+}
+body{
+    height: 100%;
+    background-color: black;
+    position: relative;
+    z-index: 0;
+}
+.body{
+    text-align: center;
+}
+.name{
+    text-align: center;
+    color: rgb(255, 0, 0);
+}
+.text{
+    margin-left: 10px;
+    color: goldenrod;
+}
+.budova{
+    text-align: center;
+    margin-bottom: 10px;
+}
+#budova_obraz{
+    height: 0; 
+    width: 90%; 
+    max-width: 700px;
+    border: none; 
+    border-radius: 5px;
+    transition: height 2s;
+}
+#credits{
+    visibility: hidden;
+    height: 0;
+    transition: visibility 0s;
+}
+.closewindow{
+    z-index: 1;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    margin-top: 0px;
+    background-color: black;
+    align-items: center;
+    border: red solid 2px;
+    box-shadow: inset 0 0 0 red, 2px 2px 10px red;
+    transition-duration: 0.5s;
+}
+.closewindow:hover{
+    background-color: red;
+    box-shadow: none;
+}
+.header{
+    border-radius: 0 0 10px 10px;
+    margin: 0;
+    min-height: 70px;
+    min-width: 100%;
+    overflow: hidden;
+    padding: 0px;
+    background-color: darkred;
+    border-bottom: red 3px solid;
+    top: 0%;
+    left: 0%;
+    right: 0%;
+}
+.panel{
+    border-radius: 10px 10px 0 0;
+    min-height: 70px;
+    min-width: 100%;
+    position: fixed;
+    bottom: 0%;
+    overflow: hidden;
+    padding-bottom: 10px;
+    background-color: darkred;
+    border-top: red 3px solid;
+    display: inline-block;
+    z-index: 2;
+    left: 0%;
+    right: 0%;
+}
+.panel_info {
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    grid-column-gap: 0px;
+}
+#pracuj{
+    background-color: black;
+    align-items: center;
+    text-align: left;
+    color: white;
+    margin-left: 10px;
+    border: red solid 2px;
+    box-shadow: inset 0 0 0 red, 2px 2px 10px red;
+    cursor: pointer;
+    transition-duration: 0.5s;
+}
+#pracuj:hover{
+    background-color: red;
+    box-shadow: none;
+}
+#animace_coin {
+    margin-left: 48%;
+}
+#animace_coin_1, #animace_coin_2, #animace_coin_3, #animace_coin_4{
+    border-radius: 100px;
+    width: auto;
+    height: auto;
+    display: none;
+    position: relative;
+}
+#animace_coin_1 img, #animace_coin_2 img, #animace_coin_3 img, #animace_coin_4 img{
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    animation: pracuje 0.1s 1 ease-in;
+}
+@keyframes pracuje {
+    0% {
+        transform: translateY(0px);
+        opacity: 100%;
+    }
+    100% {
+        transform: translateY(-100px);
+        opacity: 0%;
+    }
+}
+.building_title{
+    color: red;
+    text-align: center;
+}
+div.buildthings{
+    transition:all 0.5s; 
+    -moz-transition:all 0.5s; 
+    -webkit-transition:all 0.5s;
+    cursor: pointer;
+}
+div.buildthings:hover{
+    transform:scale(1.05);
+    -moz-transform: scale(1.05);
+    -webkit-transform:scale(1.05);
+}
+.buildthings{
+    list-style: none;
+    padding: 20px;
+    border: red solid 1px;
+    margin-bottom:5px;
+    background:white;
+    box-shadow:inset 0 0 0 red, 5px 0 20px red;
+    text-align: center;
+}
+.jobs{
+    text-align: center;
+    align-items: center;
+    display: block;
+    margin: auto;
+}
+#vydelky1{
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+    grid-column-gap: 2px;
+    animation-name: vydelky;
+    animation-duration: 1s;
+}
+#vydelky2{
+    grid-template-columns: repeat(3, 33%);
+    grid-column-gap: 2px;
+    display: none;
+    animation-name: vydelky;
+    animation-duration: 1s;
+}
+#vydelky3{
+    grid-template-columns: repeat(3, 33%);
+    grid-column-gap: 2px;
+    display: none;
+    animation-name: vydelky;
+    animation-duration: 1s;
+}
+@keyframes vydelky {
+    from {opacity: 0%;}
+    to {opacity: 100%;}
+}
+#building{
+    text-align: center;
+    align-items: center;
+    display: block;
+}
+#stavba1{
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+    grid-column-gap: 2px;
+    animation-name: vydelky;
+    animation-duration: 1s;
+}
+#stavba2{
+    grid-template-columns: repeat(3, 33%);
+    grid-column-gap: 2px;
+    display: none;
+    animation-name: vydelky;
+    animation-duration: 1s;
+}
+#stavba3{
+    grid-template-columns: repeat(3, 33%);
+    grid-column-gap: 2px;
+    display: none;
+    animation-name: vydelky;
+    animation-duration: 1s;
+}
+#pracovnici{
+    text-align: center;
+    align-items: center;
+    display: block;
+}
+.nadpis_pracovnici{
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    grid-column-gap: 0px;
+}
+#pracovnici1{
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+    grid-column-gap: 2px;
+    animation-name: vydelky;
+    animation-duration: 1s;
+}
+#posunuti_levelu{
+    margin-bottom: 200px;
+    text-align: center;
+    align-items: center;
+    display: block;
+    text-align: center;
+    display: grid;
+}
+#levelcode{
+    height: 15px;
+    width: auto;
+    resize: none;
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: center;
+    align-content: center;
+    border: red solid 3px;
+}
+#nepracuje{
+    visibility: hidden;
+    animation: blik 1s infinite;
+    text-align: center;
+    z-index: 1;
+    top: 0;
+}
+.ludvicek_level2, .kraj_vypadek{
+    list-style: none;
+    padding: 20px;
+    margin-bottom:5px;
+    background:white;
+    text-align: center;
+    opacity: 60%;
+}
+#prijem_2mil {
+    visibility: visible;
+}
+@keyframes blik {
+    0% {
+        color: red;
+    }
+    100% {
+        color: black;
+    }
+    50% {
+        color: red;
+    }
+}
+#btc_button{
+    background-color: black;
+    align-items: center;
+    text-align: left;
+    color: white;
+    margin-left: 10px;
+    border: red solid 2px;
+    cursor: pointer;
+    transition-duration: 0.5s;
+}
+#btc_button:hover{
+    background-color: red;
+}
+#chyba_nedostupne, #prohra, #chybapenize, #chybadelnik, #ludva_level2, #propad_crypto, #kraj_vypadek, #hackersky_utok {
+    visibility: hidden;
+    width: auto;
+    height: auto;
+    background-color: #000;
+    color: #fff;
+    right: 35%;
+    left: 35%;
+    bottom: auto;
+    top: 43%;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 8px;
+    position: fixed;
+    z-index: 2;
+    opacity: 85%;
+}
+#info_start, #info_start_two {
+    visibility: visible;
+    width: auto;
+    height: auto;
+    background-color: #000;
+    color: #fff;
+    right: 15%;
+    left: 15%;
+    bottom: auto;
+    top: 35%;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 8px;
+    position: fixed;
+    z-index: 3;
+    opacity: 100%;
+}
+.info {
+    visibility: hidden;
+    width: auto;
+    height: auto;
+    background-color: #000;
+    color: #fff;
+    right: 10%;
+    left: 10%;
+    bottom: auto;
+    top: 10%;
+    bottom: auto;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 8px;
+    position: fixed;
+    z-index: 3;
+    opacity: 90%;
+    vertical-align: middle;
+}
+#napoveda {
+    cursor: pointer;
+}
+#vyhra, #vyhra2, #epic_cheat {
+    visibility: hidden;
+    width: auto;
+    height: auto;
+    background-color: #000;
+    color: #fff;
+    right: 23%;
+    left: 23%;
+    bottom: auto;
+    top: 43%;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 8px;
+    position: fixed;
+    z-index: 2;
+    opacity: 85%;
+}
+#chyba_nemuzestavet {
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    border-radius: 0px;
+    padding: 8px 8px;
+    z-index: 1;
+    opacity: 70%;
+    position: absolute;
+}
+::-webkit-scrollbar{
+    width: 10px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: red;
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover{
+    background-color: darkred;
+}
