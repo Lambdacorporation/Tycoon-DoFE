@@ -56,13 +56,29 @@ function budova_skryt(){
         a = document.getElementById("budova_obraz").width;
         document.getElementById("budova_obraz").style.height = (a/3)*2 +"px";
         document.getElementById("budova_obraz").style.border = "3px solid red";
-        document.getElementById("budova_skryt").innerHTML = "˄ skrýt";
+        document.getElementById("budova_skryt").innerHTML = "˄ skrýt budovu";
         skryto = false;
     }else{
         document.getElementById("budova_obraz").style.height = "0";
         document.getElementById("budova_obraz").style.border = "none";
-        document.getElementById("budova_skryt").innerHTML = "v rozbalit";
+        document.getElementById("budova_skryt").innerHTML = "v zobrazit budovu";
         skryto = true;
+    }
+}
+//Hráč chce rozbalit nebo skrýt credits
+var skrytocredits = true;
+function credits_skryt(){
+    if (skrytocredits){
+        document.getElementById("credits").style.height = "100%";
+        document.getElementById("credits").style.visibility = "visible";
+        document.getElementById("credits_skryt").innerHTML = "˄ skrýt credits";
+        skrytocredits = false;
+    }else{
+        document.getElementById("credits").style.height = "0";
+        document.getElementById("credits").style.visibility = "hidden";
+        document.getElementById("credits").style.border = "none";
+        document.getElementById("credits_skryt").innerHTML = "v zobrazit credits";
+        skrytocredits = true;
     }
 }
 function zmena_okna(){
@@ -270,32 +286,21 @@ function koupit_prijem_100k(){
     coiny -= cena_prijem_100k;
     document.getElementById("coiny").innerHTML = coiny;
 }
-//Trvalý výdělek 2mil coin/s
-var pocet_prijem_2mil = 0;
-function koupit_prijem_2mil(){
-    if(coiny < cena_prijem_2mil){
-        ok_penize(); document.getElementById("chybapenize").style.visibility = "visible";
-        return;
-    }
-    pocet_prijem_2mil += 1;
-    coiny -= cena_prijem_2mil;
-    document.getElementById("coiny").innerHTML = coiny;
-}
 //Odkliknutí OK na chybové hlášce
 function ok_penize(){
     document.getElementById("chyba_nedostupne").style.visibility = "hidden";
     document.getElementById("chybapenize").style.visibility = "hidden";
     document.getElementById("chybadelnik").style.visibility = "hidden";
     document.getElementById("info_start").style.visibility = "hidden";
-    document.getElementById("info_start_two").style.visibility = "hidden";
-    document.getElementById("ludva_level2").style.visibility = "hidden";
-    document.getElementById("propad_crypto").style.visibility = "hidden";
     document.getElementById("epic_cheat").style.visibility = "hidden";
 
     document.getElementById("info1").style.visibility = "hidden";
     document.getElementById("info2").style.visibility = "hidden";
     document.getElementById("info3").style.visibility = "hidden";
     document.getElementById("all").style.filter = "";
+
+    document.getElementById("vyhra").style.visibility = "hidden";
+    document.getElementById("prohra").style.visibility = "hidden";
 }
 //Stavba
 //Hráč si kupuje polystyren
@@ -456,11 +461,6 @@ var ludvik_nepracuje = false;
 var pocet_nejdelnik = 0;
 var rychlost_nejdelnik = 1;
 function kup_nejdelnik (){
-    if (level2){
-        ok_penize(); 
-        document.getElementById("ludva_level2").style.visibility = "visible";
-        return;
-    }
     if (ludvik_nepracuje){
         ludvik_nepracuje = false;
         rychlost_nejdelnik = 1;
@@ -500,7 +500,7 @@ function aktualizovatprijem(){
     //Skloňování a zkrácení zápisu výdělků za sekundu
     if (vyroba == 1) sklonovani_vyroba = "coin";
     if ((vyroba >= 2)&&(vyroba < 5)) sklonovani_vyroba = "coiny";
-    if ((vyroba >= 5)&&(vyroba == 0)) sklonovani_vyroba = "coinů";
+    if ((vyroba >= 5)||(vyroba == 0)) sklonovani_vyroba = "coinů";
     if (vyroba >= 1000){
         document.getElementById("vyroba").innerHTML = Math.round(vyroba/100)/10 + "k" + " " + sklonovani_vyroba + "/s";
     }
@@ -510,10 +510,11 @@ function aktualizovatprijem(){
     if (vyroba >= 1000000000){
         document.getElementById("vyroba").innerHTML = Math.round(vyroba/100000000)/10 + "mld" + " " + sklonovani_vyroba + "/s";
     }
+    document.getElementById("vyroba").innerHTML = vyroba + " " + sklonovani_vyroba + "/s";
     //Skloňování a zkrácení zápisu počtu coinů
     if (coiny == 1) sklonovani = " coin";
     if ((coiny >= 2)&&(coiny < 5)) sklonovani = " coiny";
-    if (coiny >= 5) sklonovani = " coinů";
+    if ((coiny >= 5)||(coiny==0)) sklonovani = " coinů";
     document.getElementById("sklonovani_coiny").innerHTML = sklonovani;
     if (coiny >= 1000){
         document.getElementById("coiny").innerHTML = Math.round(coiny/100)/10 + "k";
@@ -529,14 +530,16 @@ function aktualizovatprijem(){
 window.setInterval(function() {
     aktualizovatprijem();
     zmena_okna();
-}, 0);
+}, 1);
 //nastavuje interval pro každý výdělek
 var intervalvydelek = 1000;
 window.setInterval(function() {
     prohra();
     vyhra();
-    dostat_prijem();
     postup_pridat();
+}, 1000);
+window.setInterval(function() {
+    dostat_prijem();
 }, intervalvydelek);
 //nastavuje interval pro zlenivění Ludvíčka
 window.setInterval(function() {
@@ -560,15 +563,9 @@ function ok_prohra(){
 //Výhra
 function vyhra(){
     if (postup >= 100){
-        if (!level2){
-            //ok_penize(); 
-            //document.getElementById("info_start_two").style.visibility = "visible";
-            druhylevel();
-        }
-        if (level2){
-            ok_penize(); 
-            document.getElementById("vyhra2").style.visibility = "visible";
-        }
+        ok_penize(); 
+        druhylevel();
+        return;
     }
 }
 //přeskakování levelu pomocí zadání kódu levelu
@@ -593,110 +590,6 @@ function smazattext(){
 //změna na druhý level
 
 function druhylevel(){
-    postup = 0;
-    level2 = true;
-    ok_penize();
-    document.getElementById("info_start_two").visibility = "visible";
-    intervalvydelek += 1000;
-    //Testovací prvek
-    document.getElementById("levelcode").value = "Funguje to!";
-
-    document.getElementById("nejdelnik").style.opacity = "60%";
-    document.getElementById("nejdelnik").className = "ludvicek_level2";
-    document.getElementById("ludvapopis2").innerHTML = "Ludvíček je pořádný český pracant (NEPRACUJE)."
-    document.getElementById("budova_obraz").src = "https://eu.zonerama.com/photos/319973818_1021x766_16.jpg";
-    document.getElementById("crypto_title").innerHTML = "Ethereum";
-    document.getElementById("info_header_crypto").innerHTML = "Ethereum";
-    document.getElementById("crypto_p").innerHTML = "ETH";
-    document.getElementById("crypto_img").src = "https://eu.zonerama.com/photos/355531981_686x686_16.jpg";
-    document.getElementById("textcode").innerHTML = "HRESK";
-    document.getElementById("prijem_2mil").style.visibility = "visible";
-    clearlevel();//Tato funkce má na starosti smazání dat z prvního levelu
-}
-
-//Automatické ubírání určitého procenta coinů jako výplatu pro zaměstnance a daně
-window.setInterval(function() {
-    if (level2 = false){return;}
-    if ((vyroba < 5000)&&(coiny < 10000)){return;}
-    if (level2){
-        dane();
-        platy();
-    }
-}, 100000);
-
-var nasobplaty = (coiny/10)*3;
-function platy(){
-    coiny -= nasobplaty;
-}
-function dane(){
-    coiny -= (coiny/100)*36;
-    document.getElementById("coiny").innerHTML = coiny;
-}
-
-//Definuje kdy a jak má nastat propad burzy
-var cas_propad = 100000;
-function propadburzy(){
-    pocet_btc = 0;
-    document.getElementById("btc_pocet").innerHTML = pocet_btc;
-    ok_penize(); document.getElementById("propad_crypto").style.visibility = "visible";
-    cas_propad = Math.random()*100000;
-}
-window.setInterval(function(){
-    if (level2){
-        propadburzy();
-    }
-}, cas_propad)
-
-function clearlevel(){
-    pocet_prijem_1 = 0;
-    pocet_prijem_10 = 0;
-    pocet_prijem_100 = 0;
-    pocet_prijem_1000 = 0;
-    pocet_prijem_10000 = 0;
-    pocet_btc = 0;
-    document.getElementById("btc_pocet").innerHTML = pocet_btc;
-    pocet_prijem_100k = 0;
-    pocet_prijem_2mil = 0;
-    pocet_zakladdelnik = 0;
-    pocet_strednidelnik = 0;
-    pocet_nejdelnik = 0;
-    vyroba = 0;
-    document.getElementById("vyroba").innerHTML = vyroba + " " + sklonovani_vyroba + "/s";
-    postup = 0;
-    document.getElementById("postup").innerHTML = postup;
-    coiny = 0;
-    document.getElementById("coiny").innerHTML = coiny;
-    koupeno_barvy = false;
-    koupeno_obklady = false;
-    koupeno_okna = false;
-    koupeno_podlaha = false;
-    koupeno_polystyren = false;
-    koupeno_strecha = false;
-    koupeno_technika = false;
-    muzezamestnat = false;
-    premenacen();
-}
-
-function premenacen(){//mění ceny (inflace) na začátku levelu 2
-    document.getElementById("cenapolystyren").innerHTML = "Cena: 60mil coinů";
-    document.getElementById("cenaobklady").innerHTML = "Cena: 80mil coinů";
-    document.getElementById("cenaokna").innerHTML = "Cena: 170mil coinů";
-    document.getElementById("cenatechnika").innerHTML = "Cena: 200mil coinů";
-    document.getElementById("cenapodlaha").innerHTML = "Cena: 220mil coinů";
-    document.getElementById("cenastrecha").innerHTML = "Cena: 321mil coinů";
-    document.getElementById("cenabarvy").innerHTML = "Cena: 460mil coinů";
-
-    cena_polystyren = 60000000;
-    cena_obklady = 80000000;
-    cena_oken = 170000000;
-    cena_technika = 200000000;
-    cena_strechy = 321000000;
-    cena_podlaha = 220000000;
-    cena_barvy = 560000000;
-
-    document.getElementById("cenafranta").innerHTML = "Cena: 100k coinů/s";
-    document.getElementById("cenaondra").innerHTML = "Cena: 2mil coinů/s";
-
-    cena_zakladdelnik = 100000;
-    cena_strednidelnik = 2000000;
+    //přesměrování na web s druhým levelem
+    window.location.href="level2.html";
 }
