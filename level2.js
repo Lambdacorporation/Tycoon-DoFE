@@ -295,7 +295,6 @@ function ok_penize(){
     document.getElementById("chyba_nedostupne").style.visibility = "hidden";
     document.getElementById("chybapenize").style.visibility = "hidden";
     document.getElementById("chybadelnik").style.visibility = "hidden";
-    document.getElementById("info_start").style.visibility = "hidden";
     document.getElementById("info_start_two").style.visibility = "hidden";
     document.getElementById("ludva_level2").style.visibility = "hidden";
     document.getElementById("propad_crypto").style.visibility = "hidden";
@@ -308,7 +307,6 @@ function ok_penize(){
     document.getElementById("info3").style.visibility = "hidden";
     document.getElementById("all").style.filter = "";
 
-    document.getElementById("vyhra").style.visibility = "hidden";
     document.getElementById("vyhra2").style.visibility = "hidden";
     document.getElementById("prohra").style.visibility = "hidden";
 }

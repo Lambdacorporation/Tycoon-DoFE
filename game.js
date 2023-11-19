@@ -292,11 +292,7 @@ function ok_penize(){
     document.getElementById("chybapenize").style.visibility = "hidden";
     document.getElementById("chybadelnik").style.visibility = "hidden";
     document.getElementById("info_start").style.visibility = "hidden";
-    document.getElementById("ludva_level2").style.visibility = "hidden";
-    document.getElementById("propad_crypto").style.visibility = "hidden";
     document.getElementById("epic_cheat").style.visibility = "hidden";
-    document.getElementById("kraj_vypadek").style.visibility = "hidden";
-    document.getElementById("hackersky_utok").style.visibility = "hidden";
 
     document.getElementById("info1").style.visibility = "hidden";
     document.getElementById("info2").style.visibility = "hidden";
@@ -304,7 +300,6 @@ function ok_penize(){
     document.getElementById("all").style.filter = "";
 
     document.getElementById("vyhra").style.visibility = "hidden";
-    document.getElementById("vyhra2").style.visibility = "hidden";
     document.getElementById("prohra").style.visibility = "hidden";
 }
 //Stavba
